@@ -23,8 +23,7 @@
     "storybook": "start-storybook -p 6006",
     "postpublish": "teamcity-surge-autorelease --dist=storybook-static",
     "export-components": "import-path --path src",
-    "lint": "yoshi lint",
-    "pr-release": "teamcity-surge-autorelease --dist=storybook-static"
+    "lint": "yoshi lint"
   },
   "yoshi": {
     "features": {
