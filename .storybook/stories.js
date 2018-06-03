@@ -94,6 +94,7 @@ import '../stories/EndorseContentLayout';
 
 // 10. Tables
 import '../stories/DataTable'; // 10.1 DataTable
+import '../stories/Table'; // 10.2 Table Card
 
 // 11. Pickers and Selectors
 import '../stories/DropdownLayout'; // 11.1 DropdownLayout

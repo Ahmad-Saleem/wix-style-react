@@ -65,7 +65,6 @@ class DataTable extends WixComponent {
       data;
 
     const table = this.renderTable(rowsToRender);
-
     if (infiniteScroll) {
       return this.wrapWithInfiniteScroll(table);
     }
