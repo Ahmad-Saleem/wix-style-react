@@ -26,6 +26,34 @@ describe('Table', () => {
     expect(driver.hasChildWithId(defaultProps.id)).toBeTruthy();
   });
 
+  it('should display checkboxes if showSelection is true', () => {
+    const driver = createDriver(<Table {...defaultProps} showSelection/>);
+    expect(driver.getRowCheckboxDriver(1).exists()).toBeTruthy();
+    expect(driver.getTableCheckboxDriver().exists()).toBeTruthy();
+  });
+
+  it('should check rows checkboxes according to selection prop', () => {});
+  it('should change selection when user selection changed', () => {});
+  it('should call onSelectionChanged with correct selection when checkbox clicked', () => {});
+  it('should rerender on data update', () => {});
+  describe('Top checkbox', () => {
+    it('should display as checked when all rows are selected', () => {});
+    it('should display as unchecked when no rows are selected', () => {});
+    it('should display as partial when some rows are selected', () => {});
+    it('should select all row when clicked and no checkboxes are checked', () => {});
+    it('should select all row when clicked and some checkboxes are checked', () => {});
+    it('should unselect all row when clicked and all checkboxes are checked', () => {});
+    it('should call onSelectionChanged when clicked and no checkboxes are checked with correct selection', () => {});
+    it('should call onSelectionChanged when clicked and some checkboxes are checked with correct selection', () => {});
+    it('should call onSelectionChanged when clicked and all checkboxes are checked with correct selection', () => {});
+  });
+  it('should render Header', () => {});
+  it('should render Footer', () => {});
+  describe('Bulk Action Header', () => {
+    it('should render if some rows are checked', () => {});
+    it('should display nuber of selected rows in title', () => {});
+  });
+
   describe('testkit', () => {
     it('should exist', () => {
       const div = document.createElement('div');

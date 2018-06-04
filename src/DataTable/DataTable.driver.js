@@ -61,8 +61,9 @@ const dataTableDriverFactory = ({element, wrapper, component}) => {
       return !!sortableTitle && sortableTitle.classList.contains('sortArrowAsc');
     },
     clickSort: (index, eventData) => ReactTestUtils.Simulate.click(getHeaderTitleByIndex(index), eventData),
-    getRowDetails: index => getRowDetails(index)
-
+    getRowDetails: index => getRowDetails(index),
+    getCell,
+    getHeaderTitleByIndex
   };
 };
 

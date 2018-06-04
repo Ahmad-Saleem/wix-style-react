@@ -1,34 +1,51 @@
 import React from 'react';
 import DataTable from '../DataTable';
-import s from './Table.scss';
+//import s from './Table.scss';
 import WixComponent from '../BaseComponents/WixComponent';
-import Card from '../Card/Card';
+import Checkbox from '../Checkbox';
+import PropTypes from 'prop-types';
 
 /**
  * Search component with suggestions based on input value listed in dropdown
  */
 export default class Table extends WixComponent {
   static displayName = 'Table';
+  columns;
+
+  constructor(props) {
+    super(props);
+    this.columns = props.showSelection ? [this.initCheckboxColumn(), ...props.columns] : props.columns;
+  }
+
+  initCheckboxColumn() {
+    return {
+      title: <Checkbox dataHook="table-select"/>,
+      render: () => <Checkbox dataHook="row-select"/>
+    };
+  }
 
   render() {
     return (
-      <Card>
-        <Card.Header title={'Card Table'}/>
+      <div>
+        <div>{'Card Table'}</div>
         <DataTable
           dataHook="table"
           {...this.props}
+          columns={this.columns}
           />
-      </Card>
+      </div>
     );
   }
 }
 
 Table.defaultProps = {
-  ...DataTable.defaultProps
+  ...DataTable.defaultProps,
+  showSelection: false
 };
 
 Table.propTypes = {
-  ...DataTable.propTypes
+  ...DataTable.propTypes,
+  showSelection: PropTypes.bool
 };
 
 

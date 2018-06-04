@@ -1,10 +1,8 @@
 import eyes from 'eyes.it';
 
-import {
-  tableTestkitFactory,
-  createStoryUrl,
-  waitForVisibilityOf
-} from '../../testkit/protractor';
+import {tableTestkitFactory} from '../../testkit/protractor';
+import {createStoryUrl, waitForVisibilityOf} from '../../test/utils/protractor';
+
 import autoExampleDriver from 'wix-storybook-utils/AutoExampleDriver';
 
 describe('Table', () => {
@@ -23,8 +21,8 @@ describe('Table', () => {
     autoExampleDriver.reset();
   });
 
-  eyes.it('should filter search options by input', () => {
-    expect(driver.getTable().isDisplayed()).toBe(true);
+  eyes.it('should display table', async () => {
+    expect(driver.isTableVisible()).toBe(true);
   });
 
 });

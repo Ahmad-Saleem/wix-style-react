@@ -2,7 +2,7 @@ import Table from 'wix-style-react/Table';
 
 export default {
   category: '10. Tables',
-  storyName: '10.2 Card Table',
+  storyName: '10.2 Table Card',
 
   component: Table,
   componentPath: '../../src/Table',
@@ -15,6 +15,7 @@ export default {
       {title: 'Row Num', render: (row, rowNum) => rowNum},
       {title: 'A', render: row => row.a},
       {title: 'B', render: row => row.b}
-    ]
+    ],
+    showSelection: true
   }
 };
