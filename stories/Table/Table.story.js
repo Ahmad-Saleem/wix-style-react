@@ -11,6 +11,7 @@ export default {
     dataHook: 'storybook-table',
     id: 'id',
     data: [{a: 'value 1', b: 'value 2'}, {a: 'value 3', b: 'value 4'}],
+    selections: [true, false],
     columns: [
       {title: 'Row Num', render: (row, rowNum) => rowNum},
       {title: 'A', render: row => row.a},

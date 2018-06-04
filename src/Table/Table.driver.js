@@ -8,11 +8,11 @@ const tableDriverFactory = ({element, wrapper, component, eventTrigger}) => {
   return {
     ...dataTableDriver,
     getRowCheckboxDriver: index => checkboxDriverFactory({
-      element: dataTableDriver.getCell(index, 0).querySelectorAll('[data-hook="row-select"]'),
+      element: dataTableDriver.getCell(index, 0).querySelector('[data-hook="row-select"]'),
       eventTrigger
     }),
     getTableCheckboxDriver: () => checkboxDriverFactory({
-      element: dataTableDriver.getHeaderTitleByIndex(0).querySelectorAll('[data-hook="table-select"]'),
+      element: dataTableDriver.getHeaderTitleByIndex(0).querySelector('[data-hook="table-select"]'),
       eventTrigger
     })
   };

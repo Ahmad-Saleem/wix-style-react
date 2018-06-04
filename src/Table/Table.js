@@ -14,13 +14,16 @@ export default class Table extends WixComponent {
 
   constructor(props) {
     super(props);
-    this.columns = props.showSelection ? [this.initCheckboxColumn(), ...props.columns] : props.columns;
+    // this.state = {
+    //   selections: props.selections
+    // };
+    this.columns = props.showSelection ? [this.initCheckboxColumn(props.selections), ...props.columns] : props.columns;
   }
 
-  initCheckboxColumn() {
+  initCheckboxColumn(selections) {
     return {
       title: <Checkbox dataHook="table-select"/>,
-      render: () => <Checkbox dataHook="row-select"/>
+      render: (row, rowNum) => <Checkbox dataHook="row-select" checked={selections[rowNum]}/>
     };
   }
 
@@ -45,7 +48,8 @@ Table.defaultProps = {
 
 Table.propTypes = {
   ...DataTable.propTypes,
-  showSelection: PropTypes.bool
+  showSelection: PropTypes.bool,
+  selections: PropTypes.array
 };
 
 

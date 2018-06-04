@@ -18,6 +18,7 @@
     "pretest:e2e": "./scripts/ensure-dist.sh",
     "test:e2e": "concurrently 'npm run test:e2e-only' 'node scripts/e2e-server.js' --names 'protractor,e2e-server' --success first --kill-others",
     "test:e2e-only": "NODE_ENV=production yoshi test --protractor",
+    "test:watch": "yoshi test --jest --watch",
     "build": "npm run lint && svg2react-icon && yoshi build && build-storybook && npm run export-components",
     "pr-postbuild": "teamcity-surge-autorelease --dist=storybook-static",
     "storybook": "start-storybook -p 6006",

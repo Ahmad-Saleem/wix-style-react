@@ -13,6 +13,7 @@ describe('Table', () => {
   const defaultProps = {
     id: 'id',
     data: [{a: 'value 1', b: 'value 2'}, {a: 'value 3', b: 'value 4'}],
+    selections: [true, false],
     columns: [
       {title: 'Row Num', render: (row, rowNum) => rowNum},
       {title: 'A', render: row => row.a},
@@ -32,7 +33,18 @@ describe('Table', () => {
     expect(driver.getTableCheckboxDriver().exists()).toBeTruthy();
   });
 
-  it('should check rows checkboxes according to selection prop', () => {});
+  it('shouldn\'t display checkboxes if showSelection is false', () => {
+    const driver = createDriver(<Table {...defaultProps}/>);
+    expect(driver.getRowCheckboxDriver(1).exists()).toBeFalsy();
+    expect(driver.getTableCheckboxDriver().exists()).toBeFalsy();
+  });
+
+  it('should check rows checkboxes according to selection prop', () => {
+    const driver = createDriver(<Table {...defaultProps} showSelection/>);
+    expect(driver.getRowCheckboxDriver(0).isChecked()).toBeTruthy();
+    expect(driver.getRowCheckboxDriver(1).isChecked()).toBeFalsy();
+  });
+
   it('should change selection when user selection changed', () => {});
   it('should call onSelectionChanged with correct selection when checkbox clicked', () => {});
   it('should rerender on data update', () => {});
