@@ -249,9 +249,11 @@ class TableHeader extends Component {
       moveBy: {x: 2.5, y: 0}
     });
     return (
-      <Tooltip {..._tooltipProps}>
-        <span><Info2 className={s.infoIcon}/></span>
-      </Tooltip>);
+      <div className={s.inline} onClick={e => e.stopPropagation()}>
+        <Tooltip {..._tooltipProps}>
+          <span><Info2 className={s.infoIcon}/></span>
+        </Tooltip>
+      </div>);
   };
 
   renderHeaderCell = (column, colNum) => {
