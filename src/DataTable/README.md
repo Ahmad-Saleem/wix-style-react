@@ -47,4 +47,4 @@
 | important | bool | false | - | Whether font color should be stronger, more dominant |
 | sortable | bool | false | - | Enables sorting by column |
 | sortDescending | bool | - | - | Pass false - for ascending sort, true - for descending|
-| style | object | - | - | Sets the column inline style. Cannot be set here, please use table tdVerticalPadding |
+| style | object | - | - | Sets the column inline style. Vertical padding cannot be set here, please use table tdVerticalPadding |
