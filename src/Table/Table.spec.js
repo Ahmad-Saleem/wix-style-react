@@ -22,6 +22,11 @@ describe('Table', () => {
     rowClass: 'class-name'
   };
 
+  const defaultHeader = (<div>Header</div>);
+  const renderHeader = () => defaultHeader;
+  const defaultFooter = (<div>Footer</div>);
+  const renderFooter = () => defaultHeader;
+
   it('should pass id prop to child', () => {
     const driver = createDriver(<Table {...defaultProps}/>);
     expect(driver.hasChildWithId(defaultProps.id)).toBeTruthy();
@@ -29,47 +34,115 @@ describe('Table', () => {
 
   it('should display checkboxes if showSelection is true', () => {
     const driver = createDriver(<Table {...defaultProps} showSelection/>);
-    expect(driver.getRowCheckboxDriver(1).exists()).toBeTruthy();
-    expect(driver.getTableCheckboxDriver().exists()).toBeTruthy();
+    expect(driver.isRowCheckboxVisible(1)).toBeTruthy();
+    expect(driver.isTableCheckboxVisible()).toBeTruthy();
   });
 
   it('shouldn\'t display checkboxes if showSelection is false', () => {
     const driver = createDriver(<Table {...defaultProps}/>);
-    expect(driver.getRowCheckboxDriver(1).exists()).toBeFalsy();
-    expect(driver.getTableCheckboxDriver().exists()).toBeFalsy();
+    expect(driver.isRowCheckboxVisible(1)).toBeFalsy();
+    expect(driver.isTableCheckboxVisible()).toBeFalsy();
   });
 
   it('should check rows checkboxes according to selection prop', () => {
     const driver = createDriver(<Table {...defaultProps} showSelection/>);
-    expect(driver.getRowCheckboxDriver(0).isChecked()).toBeTruthy();
-    expect(driver.getRowCheckboxDriver(1).isChecked()).toBeFalsy();
+    expect(driver.isRowSelected(0)).toBeTruthy();
+    expect(driver.isRowSelected(1)).toBeFalsy();
   });
 
   it('should change selection when user selection changed', () => {
     const driver = createDriver(<Table {...defaultProps} showSelection/>);
-    const checkboxDriver = driver.getRowCheckboxDriver(1);
-    checkboxDriver.click();
-    expect(checkboxDriver.isChecked()).toBeTruthy();
+    driver.selectRow(1);
+    expect(driver.isRowSelected(1)).toBeTruthy();
   });
 
-  it('should call onSelectionChanged with correct selection when checkbox clicked', () => {});
-  it('should rerender on data update', () => {});
-  describe('Top checkbox', () => {
-    it('should display as checked when all rows are selected', () => {});
-    it('should display as unchecked when no rows are selected', () => {});
-    it('should display as partial when some rows are selected', () => {});
-    it('should select all row when clicked and no checkboxes are checked', () => {});
-    it('should select all row when clicked and some checkboxes are checked', () => {});
-    it('should unselect all row when clicked and all checkboxes are checked', () => {});
-    it('should call onSelectionChanged when clicked and no checkboxes are checked with correct selection', () => {});
-    it('should call onSelectionChanged when clicked and some checkboxes are checked with correct selection', () => {});
-    it('should call onSelectionChanged when clicked and all checkboxes are checked with correct selection', () => {});
+  it('should call onSelectionChanged with correct selection when checkbox clicked', () => {
   });
-  it('should render Header', () => {});
-  it('should render Footer', () => {});
-  describe('Bulk Action Header', () => {
-    it('should render if some rows are checked', () => {});
-    it('should display nuber of selected rows in title', () => {});
+  it('should rerender on data update', () => {
+  });
+  describe('Top checkbox', () => {
+    it('should display as checked when all rows are selected', () => {
+    });
+    it('should display as unchecked when no rows are selected', () => {
+    });
+    it('should display as partial when some rows are selected', () => {
+    });
+    it('should select all row when clicked and no checkboxes are checked', () => {
+    });
+    it('should select all row when clicked and some checkboxes are checked', () => {
+    });
+    it('should unselect all row when clicked and all checkboxes are checked', () => {
+    });
+    it('should call onSelectionChanged when clicked and no checkboxes are checked with correct selection', () => {
+    });
+    it('should call onSelectionChanged when clicked and some checkboxes are checked with correct selection', () => {
+    });
+    it('should call onSelectionChanged when clicked and all checkboxes are checked with correct selection', () => {
+    });
+  });
+  it('should render Header node', () => {
+    const driver = createDriver(
+      <Table
+        {...defaultProps}
+        showSelection
+        header={defaultHeader}
+        selections={[false, false]}
+        />);
+    expect(driver.isHeaderDisplayed()).toBeTruthy();
+    expect(driver.isSelectionHeaderDisplayed()).toBeFalsy();
+  });
+  it('should render Header function', () => {
+    const driver = createDriver(
+      <Table
+        {...defaultProps}
+        showSelection
+        header={renderHeader}
+        selections={[false, false]}
+        />);
+    expect(driver.isHeaderDisplayed()).toBeTruthy();
+    expect(driver.isSelectionHeaderDisplayed()).toBeFalsy();
+  });
+  it('should render Footer node', () => {
+    const driver = createDriver(<Table {...defaultProps} showSelection footer={defaultFooter}/>);
+    expect(driver.isFooterDisplayed()).toBeTruthy();
+  });
+  it('should render Footer function', () => {
+    const driver = createDriver(<Table {...defaultProps} showSelection footer={renderFooter}/>);
+    expect(driver.isFooterDisplayed()).toBeTruthy();
+  });
+  describe('seletionHeader', () => {
+    it('should change from header to selectionHeader when selection introduced', () => {
+      const driver = createDriver(
+        <Table
+          {...defaultProps}
+          selections={[false, false]}
+          showSelection
+          header={defaultHeader}
+          selectionHeader={defaultHeader}
+          />);
+      expect(driver.isHeaderDisplayed()).toBeTruthy();
+      expect(driver.isSelectionHeaderDisplayed()).toBeFalsy();
+      driver.selectRow(0);
+      // expect(driver.isHeaderDisplayed()).toBeFalsy();
+      // expect(driver.isSelectionHeaderDisplayed()).toBeTruthy();
+    });
+    it('should change from selectionHeader to header when selection removed', () => {
+      const driver = createDriver(
+        <Table
+          {...defaultProps}
+          selections={[true, false]}
+          showSelection
+          header={defaultHeader}
+          selectionHeader={defaultHeader}
+          />);
+      expect(driver.isHeaderDisplayed()).toBeFalsy();
+      expect(driver.isSelectionHeaderDisplayed()).toBeTruthy();
+      driver.selectRow(0);
+      // expect(driver.isHeaderDisplayed()).toBeTruthy();
+      // expect(driver.isSelectionHeaderDisplayed()).toBeFalsy();
+    });
+    it('should display number of selected rows in title', () => {
+    });
   });
 
   describe('testkit', () => {
