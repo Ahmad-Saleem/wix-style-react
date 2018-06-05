@@ -45,7 +45,13 @@ describe('Table', () => {
     expect(driver.getRowCheckboxDriver(1).isChecked()).toBeFalsy();
   });
 
-  it('should change selection when user selection changed', () => {});
+  it('should change selection when user selection changed', () => {
+    const driver = createDriver(<Table {...defaultProps} showSelection/>);
+    const checkboxDriver = driver.getRowCheckboxDriver(1);
+    checkboxDriver.click();
+    expect(checkboxDriver.isChecked()).toBeTruthy();
+  });
+
   it('should call onSelectionChanged with correct selection when checkbox clicked', () => {});
   it('should rerender on data update', () => {});
   describe('Top checkbox', () => {

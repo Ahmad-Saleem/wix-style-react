@@ -11,19 +11,29 @@ import PropTypes from 'prop-types';
 export default class Table extends WixComponent {
   static displayName = 'Table';
   columns;
+  state = {selections: []};
 
   constructor(props) {
     super(props);
-    // this.state = {
-    //   selections: props.selections
-    // };
-    this.columns = props.showSelection ? [this.initCheckboxColumn(props.selections), ...props.columns] : props.columns;
+    this.state = {
+      selections: props.selections
+    };
+    this.columns = props.showSelection ? [this.initCheckboxColumn(this.state.selections), ...props.columns] : props.columns;
   }
 
   initCheckboxColumn(selections) {
     return {
       title: <Checkbox dataHook="table-select"/>,
-      render: (row, rowNum) => <Checkbox dataHook="row-select" checked={selections[rowNum]}/>
+      render: (row, rowNum) => <Checkbox
+        dataHook="row-select"
+        checked={selections[rowNum]}
+        onChange={() => {
+          const selections = this.state.selections;
+          selections[rowNum] = !selections[rowNum];
+          this.setState({selections});
+          this.dataTable.forceUpdate();
+        }}
+        />
     };
   }
 
@@ -35,6 +45,7 @@ export default class Table extends WixComponent {
           dataHook="table"
           {...this.props}
           columns={this.columns}
+          ref={dataTable => this.dataTable = dataTable}
           />
       </div>
     );
@@ -43,7 +54,8 @@ export default class Table extends WixComponent {
 
 Table.defaultProps = {
   ...DataTable.defaultProps,
-  showSelection: false
+  showSelection: false,
+  selections: []
 };
 
 Table.propTypes = {
