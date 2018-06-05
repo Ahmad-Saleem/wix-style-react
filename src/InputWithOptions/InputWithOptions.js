@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import WixComponent from '../BaseComponents/WixComponent';
 import Input from '../Input';
 import omit from 'omit';
+import defaultTo from 'lodash/defaultTo';
 import DropdownLayout from '../DropdownLayout/DropdownLayout';
 import Highlighter from '../Highlighter/Highlighter';
 
@@ -224,14 +225,12 @@ class InputWithOptions extends WixComponent {
       this.setState({isEditing: true});
     }
     if (!this.dropdownLayout._onKeyDown(event)) {
-      switch (event.key) {
-        case 'Enter':
-        case 'Tab': {
-          this._onManuallyInput(this.state.inputValue);
-          break;
-        }
-        default:
-          this.showOptions();
+      const defaultDelimiters = ['Enter', 'Tab'];
+      const delimiters = (defaultTo(this.inputAdditionalProps(), {}).delimiters || []).concat(defaultDelimiters);
+      if (delimiters.includes(event.key)) {
+        this._onManuallyInput(this.state.inputValue);
+      } else {
+        this.showOptions();
       }
     }
   }

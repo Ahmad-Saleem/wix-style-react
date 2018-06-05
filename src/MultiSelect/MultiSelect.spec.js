@@ -81,20 +81,6 @@ describe('multiSelect', () => {
     expect(inputDriver.isFocus()).toBeTruthy();
   });
 
-  it('should not lose Focus or close the list on selection with comma press', () => {
-    const onSelect = jest.fn();
-    const onChange = jest.fn();
-    const {driver, inputDriver, dropdownLayoutDriver} = createDriver(
-      <MultiSelect value={options[0].value} options={options} delimiters={[',']} onSelect={onSelect} onChange={onChange}/>
-    );
-    driver.focus();
-    inputDriver.trigger('keyDown', {key: ','});
-    expect(onSelect).toBeCalledWith([{id: options[0].id, label: options[0].value}]);
-    expect(onChange).toBeCalledWith({target: {value: ''}});
-    expect(dropdownLayoutDriver.isShown()).toBeTruthy();
-    expect(inputDriver.isFocus()).toBeTruthy();
-  });
-
   it('should call onSelect on click-outside if options empty', () => {
     const onSelect = jest.fn();
     const {driver} = createDriver(<MultiSelect value={'bob'} onSelect={onSelect}/>);
@@ -119,15 +105,13 @@ describe('multiSelect', () => {
   it('should support custom delimiters', () => {
     const onSelect = jest.fn();
     const onChange = jest.fn();
-    const {driver, inputDriver, dropdownLayoutDriver} = createDriver(
+    const {driver, inputDriver} = createDriver(
       <MultiSelect value={options[0].value} options={options} delimiters={[';']} onSelect={onSelect} onChange={onChange}/>
     );
     driver.focus();
     inputDriver.trigger('keyDown', {key: ';'});
     expect(onSelect).toBeCalledWith([{id: options[0].id, label: options[0].value}]);
     expect(onChange).toBeCalledWith({target: {value: ''}});
-    expect(dropdownLayoutDriver.isShown()).toBeTruthy();
-    expect(inputDriver.isFocus()).toBeTruthy();
   });
 
   it('should display a placeholder if there are no tags', () => {
