@@ -6,41 +6,6 @@
 
 .inputs{
   display: flex;
-
-  &.hasFocusFirst {
-    .firstinput,.firstDate {
-      z-index: 1;
-      border-right-width: 1px;
-    }
-    .lastinput,.lastDate {
-      border-left-width: 0;
-    }
-  }
-
-  &.hasFocusLast {
-    .lastinput,.lastDate {
-      z-index: 1;
-      border-left-width: 1px;
-    }
-    .firstinput,.firstDate {
-      border-right-width: 0;
-    }
-  }
-
-  &:not(.hasFocusLast)
-    .lastinput,.lastDate {
-    border-left-width: 0;
-  }
-}
-
-.firstinput,.firstDate {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-.lastinput,.lastDate {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
 }
 
 .firstinput, .lastinput {

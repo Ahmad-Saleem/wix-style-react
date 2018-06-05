@@ -102,6 +102,16 @@ $material-gap: 8px;
   }
 }
 
+.noRightBorderRadius {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.noLeftBorderRadius {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+
 .size {
   &-small  { @include Size($height: 30px, $fontSize: 14px); }
   &-normal { @include Size($height: 36px, $fontSize: 16px); }

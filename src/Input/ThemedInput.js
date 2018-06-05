@@ -33,8 +33,8 @@ class ThemedInput extends Input {
       [styles.hasFocus]: forceFocus || this.state.focus,
       [styles.roundInput]: roundInput,
       [styles.hasValue]: (value && value.length) || (this.input && !!this.input.value),
-      [noRightBorderRadius]: noRightBorderRadius,
-      [noLeftBorderRadius]: noLeftBorderRadius
+      [styles.noRightBorderRadius]: noRightBorderRadius,
+      [styles.noLeftBorderRadius]: noLeftBorderRadius
     };
 
     const placeholder = this.props.placeholder;

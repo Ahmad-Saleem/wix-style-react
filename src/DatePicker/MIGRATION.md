@@ -55,14 +55,12 @@ You can also use it if you wish, but it is not required
 
 these were either implemented wrong or not working at all:
 
-1. `noLeftBorderRadius`
-2. `noRightBorderRadius`
-3. `onEnterPressed` - use `onChange`
-6. `prefix`
-7. `readOnly` - use `disabled`
-8. `setOpen`
-9. `style`
-10. `theme`
+1. `onEnterPressed` - use `onChange`
+2. `prefix`
+3. `readOnly` - use `disabled`
+4. `setOpen`
+5. `style`
+6. `theme`
 
 
 ## 3. component styles were updated to be in sync with Wix UI design system

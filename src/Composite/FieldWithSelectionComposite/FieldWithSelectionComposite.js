@@ -67,7 +67,7 @@ class FieldWithSelectionComposite extends WixComponent {
     const errorPropName = isCheckbox ? 'hasError' : 'error';
 
     const clonedSelectionInput = React.cloneElement(selectionInput, {
-      noRightBorderRadius: true,
+      noLeftBorderRadius: true,
       disabled: this.props.disabled,
       [errorPropName]: this.props.error,
       onFocus: this._onFocusLast,
@@ -113,6 +113,7 @@ class FieldWithSelectionComposite extends WixComponent {
         {label}
         <div className={classNames(inputsWrapperClassNames)} data-hook="input-wrappers">
           {React.cloneElement(textInput, {
+            noRightBorderRadius: true,
             onFocus: this._onFocusFirst,
             onBlur: this._onBlurFirst,
             error: this.props.error,
