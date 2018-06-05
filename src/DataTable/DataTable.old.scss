@@ -1,0 +1,80 @@
+@import '../common';
+
+.table {
+  border-collapse: collapse;
+  font-family:HelveticaNeueW01-55Roma,HelveticaNeueW02-55Roma,HelveticaNeueW10-55Roma,sans-serif;
+  table-layout: fixed;
+  background-color: white;
+}
+
+.table th {
+  background-color: rgba(240, 243, 247, 0.5);
+  text-align: left;
+  text-align: start;  // not supported in IE11 & Edge; 'left' as fallback
+  color: $paletteD3;
+  border-top: solid 1px $D60;
+  padding: 5px;
+  height: 36px;
+  font-size: 12px;
+}
+
+.table td {
+  font-size: 14px;
+  color: $paletteD3;
+  padding: 9px;
+  height: 44px;
+  border-bottom: solid 1px $D70;
+}
+
+.table td.details {
+  padding: 0px;
+  height: 0px;
+  border-bottom: none;
+}
+
+.table td.active {
+  padding: 0px;
+  height: auto;
+  border-bottom: solid 1px $D70;
+}
+
+.table td.important {
+  font-size: 16px;
+  color: $paletteD2;
+}
+
+.clickableDataRow {
+  cursor: pointer;
+}
+
+.sortArrowAsc,
+.sortArrowDesc{
+  font-size: 9px;
+  margin: 0 4px;
+}
+.sortArrowDesc svg{
+  transform: rotate(180deg);
+}
+
+.row-details:not(:last-child) {
+  border-bottom: 1px solid $D70;
+
+  .row-details-inner {
+    border-top: 1px solid $D70;
+  }
+
+}
+
+.animatedDataRow {
+  td {
+    border-bottom: none medium;
+  }
+
+  cursor: pointer;
+
+  &:nth-last-child(2) {
+    td {
+      border-bottom: 1px solid $D70;
+    }
+  }
+}

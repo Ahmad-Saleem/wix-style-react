@@ -19,6 +19,7 @@ class DataTableExampleWithoutHeader extends React.Component {
         <DataTable
           dataHook="story-data-table"
           hideHeader
+          newDesign
           data={baseData}
           columns={[
               {title: 'Row Number', render: (row, rowNum) => '#' + (rowNum + 1), width: '20%', minWidth: '75px', important: true},

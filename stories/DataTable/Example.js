@@ -35,6 +35,7 @@ class DataTableExample extends React.Component {
           }}
           dynamicRowClass={row => row.firstName === baseData[1].firstName ? s.highlightRow : null}
           infiniteScroll
+          newDesign
           itemsPerPage={20}
           columns={[
               {title: 'Row Number', render: (row, rowNum) => '#' + (rowNum + 1), width: '20%', minWidth: '75px', important: true},

@@ -51,6 +51,7 @@ class DataTableExample extends React.Component {
             /*eslint-enable no-alert*/
           }}
           infiniteScroll
+          newDesign
           itemsPerPage={20}
           columns={[
               {title: 'Row Number', render: (row, rowNum) => '#' + (rowNum + 1), width: '20%', minWidth: '75px', important: true},
