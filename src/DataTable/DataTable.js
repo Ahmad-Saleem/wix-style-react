@@ -8,6 +8,7 @@ import ArrowVertical from '../Icons/dist/components/ArrowVertical';
 import {Animator} from 'wix-animations';
 import Info2 from '../Icons/dist/components/Info2';
 import Tooltip from '../Tooltip/Tooltip';
+import omit from 'lodash/omit';
 
 export const DataTableHeader = props => (
   <div>
@@ -112,7 +113,7 @@ class DataTable extends WixComponent {
     const {onRowClick, rowDetails} = this.props;
     onRowClick && onRowClick(rowData, rowNum);
     rowDetails && this.toggleRowDetails(rowNum);
-  }
+  };
 
   renderRow = (rowData, rowNum) => {
     const {onRowClick, onMouseEnterRow, onMouseLeaveRow, rowDataHook, dynamicRowClass, rowDetails} = this.props;
@@ -208,7 +209,7 @@ class DataTable extends WixComponent {
     } else {
       this.props.loadMore && this.props.loadMore();
     }
-  }
+  };
 
   toggleRowDetails = selectedRow => {
     let selectedRows = {[selectedRow]: !this.state.selectedRows[selectedRow]};
@@ -331,7 +332,7 @@ DataTable.propTypes = {
     ]).isRequired,
     render: PropTypes.func.isRequired,
     sortable: PropTypes.bool,
-    infoTooltip: PropTypes.object,
+    infoTooltipProps: PropTypes.shape(omit(Tooltip.propTypes, ['moveBy', 'dataHook'])),
     sortDescending: PropTypes.bool
   })),
   showHeaderWhenEmpty: PropTypes.bool,
