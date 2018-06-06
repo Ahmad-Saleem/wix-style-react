@@ -266,6 +266,7 @@ describe('Search', () => {
       inputDriver.click();
       expect(driver.isCollapsed()).toBeFalsy();
     });
+
     it('should not be collapsed when specified with autoFocus', () => {
       const {driver} = createDriver(
         <Search expandable autoFocus options={options}/>
@@ -273,6 +274,20 @@ describe('Search', () => {
 
       expect(driver.isExpandable()).toBeTruthy();
       expect(driver.isCollapsed()).toBeFalsy();
+    });
+
+    it('should change to expandable correctly (mounted as expandable=false)', () => {
+      const {driver} = createDriver(
+        <Search autoFocus options={options}/>
+      );
+
+      expect(driver.isExpandable()).toBeFalsy();
+      expect(driver.isCollapsed()).toBeFalsy();
+
+      driver.setProps({expandable: true});
+
+      expect(driver.isExpandable()).toBeTruthy();
+      expect(driver.isCollapsed()).toBeTruthy();
     });
   });
 });

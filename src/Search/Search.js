@@ -37,6 +37,14 @@ export default class Search extends WixComponent {
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.expandable !== nextProps.expandable && nextProps.expandable) {
+      this.setState({
+        collapsed: this._currentValue() === ''
+      });
+    }
+  }
+
   get _isControlled() {
     return 'value' in this.props && 'onChange' in this.props;
   }
