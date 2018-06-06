@@ -191,10 +191,10 @@ class DataTable extends WixComponent {
 
   renderCell = (rowData, column, rowNum, colNum) => {
     const classes = classNames(
-      typography.t1,
+      {[typography.t1]: this.props.newDesign},
       {[this.style.important]: column.important},
-      {[this.style.largeVerticalPadding]: this.props.tdVerticalPadding === 'large'},
-      {[this.style.mediumVerticalPadding]: this.props.tdVerticalPadding !== 'large'});
+      {[this.style.largeVerticalPadding]: this.props.rowVerticalPadding === 'large'},
+      {[this.style.mediumVerticalPadding]: this.props.rowVerticalPadding !== 'large'});
     const width = rowNum === 0 && this.props.hideHeader ? column.width : undefined;
 
     return (<td
@@ -317,7 +317,7 @@ DataTable.defaultProps = {
   loader: <div className="loader">Loading ...</div>,
   scrollElement: null,
   useWindow: true,
-  tdVerticalPadding: 'small',
+  rowVerticalPadding: 'medium',
   newDesign: false
 };
 
@@ -351,8 +351,8 @@ DataTable.propTypes = {
   loader: PropTypes.node,
   useWindow: PropTypes.bool,
   scrollElement: PropTypes.object,
-  tdVerticalPadding: PropTypes.oneOf([
-    'small',
+  rowVerticalPadding: PropTypes.oneOf([
+    'medium',
     'large'
   ]),
   /** this prop is deprecated and should not be used
