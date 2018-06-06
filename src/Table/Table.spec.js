@@ -9,17 +9,27 @@ import {mount} from 'enzyme';
 
 describe('Table', () => {
   const createDriver = createDriverFactory(TableDriverFactory);
+  const dataHook = 'someDataHook';
+  const createEnzymeDriver = component => {
+    const wrapper = mount(component);
+    const driver = enzymeTableTestkitFactory({wrapper, dataHook});
+    return {driver, wrapper};
+  };
 
   const defaultProps = {
     id: 'id',
     data: [{a: 'value 1', b: 'value 2'}, {a: 'value 3', b: 'value 4'}],
-    selections: [true, false],
     columns: [
       {title: 'Row Num', render: (row, rowNum) => rowNum},
       {title: 'A', render: row => row.a},
       {title: 'B', render: row => row.b}
     ],
     rowClass: 'class-name'
+  };
+
+  const withSelection = {
+    selections: [true, false],
+    showSelection: true
   };
 
   const defaultHeader = (<div>Header</div>);
@@ -33,7 +43,7 @@ describe('Table', () => {
   });
 
   it('should display checkboxes if showSelection is true', () => {
-    const driver = createDriver(<Table {...defaultProps} showSelection/>);
+    const driver = createDriver(<Table {...defaultProps} {...withSelection}/>);
     expect(driver.isRowCheckboxVisible(1)).toBeTruthy();
     expect(driver.isTableCheckboxVisible()).toBeTruthy();
   });
@@ -45,19 +55,30 @@ describe('Table', () => {
   });
 
   it('should check rows checkboxes according to selection prop', () => {
-    const driver = createDriver(<Table {...defaultProps} showSelection/>);
+    const driver = createDriver(<Table {...defaultProps} {...withSelection}/>);
     expect(driver.isRowSelected(0)).toBeTruthy();
     expect(driver.isRowSelected(1)).toBeFalsy();
   });
 
   it('should change selection when user selection changed', () => {
-    const driver = createDriver(<Table {...defaultProps} showSelection/>);
+    const driver = createDriver(<Table {...defaultProps} {...withSelection}/>);
     driver.selectRow(1);
     expect(driver.isRowSelected(1)).toBeTruthy();
   });
 
   it('should call onSelectionChanged with correct selection when checkbox clicked', () => {
+    const onSelectionChanged = jest.fn();
+    const driver = createDriver(<Table {...defaultProps} {...withSelection} onSelectionChanged={onSelectionChanged}/>);
+    driver.selectRow(1);
+    expect(onSelectionChanged).toHaveBeenCalledWith([true, true]);
   });
+
+  it('should update selection if selection prop has change', async () => {
+    const {driver, wrapper} = createEnzymeDriver(<Table {...defaultProps} selections={[false, false]} showSelection dataHook={dataHook}/>);
+    wrapper.setProps({selections: [true, false]});
+    expect(driver.isRowSelected(0)).toBeTruthy();
+  });
+
   it('should rerender on data update', () => {
   });
   describe('Top checkbox', () => {

@@ -16,22 +16,27 @@ export default class Table extends WixComponent {
   constructor(props) {
     super(props);
     this.state = {
-      selections: props.selections
+      selections: props.selections.slice()
     };
-    this.columns = props.showSelection ? [this.initCheckboxColumn(this.state.selections), ...props.columns] : props.columns;
+    this.columns = props.showSelection ? [this.initCheckboxColumn(props.onSelectionChanged), ...props.columns] : props.columns;
   }
 
-  initCheckboxColumn(selections) {
+  componentWillReceiveProps(nextProps) {
+    this.setState({selections: nextProps.selections});
+  }
+
+  initCheckboxColumn(onSelectionChanged) {
     return {
       title: <Checkbox dataHook="table-select"/>,
       render: (row, rowNum) => <Checkbox
         dataHook="row-select"
-        checked={selections[rowNum]}
+        checked={this.state.selections[rowNum]}
         onChange={() => {
           const selections = this.state.selections;
           selections[rowNum] = !selections[rowNum];
           this.setState({selections});
           this.dataTable.forceUpdate();
+          onSelectionChanged && onSelectionChanged(selections);
         }}
         />
     };
@@ -71,7 +76,8 @@ Table.defaultProps = {
 Table.propTypes = {
   ...DataTable.propTypes,
   showSelection: PropTypes.bool,
-  selections: PropTypes.array,
+  selections: PropTypes.arrayOf(PropTypes.bool),
+  onSelectionChanged: PropTypes.func,
   header: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
   footer: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
   selectionHeader: PropTypes.oneOfType([PropTypes.func, PropTypes.node])
