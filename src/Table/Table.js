@@ -4,6 +4,7 @@ import s from './Table.scss';
 import WixComponent from '../BaseComponents/WixComponent';
 import Checkbox from '../Checkbox';
 import PropTypes from 'prop-types';
+import isEqual from 'lodash/isEqual';
 
 /**
  * Search component with suggestions based on input value listed in dropdown
@@ -21,8 +22,15 @@ export default class Table extends WixComponent {
     this.columns = props.showSelection ? [this.initCheckboxColumn(props.onSelectionChanged), ...props.columns] : props.columns;
   }
 
+  shouldComponentUpdate() {
+    return true;
+  }
+
   componentWillReceiveProps(nextProps) {
-    this.setState({selections: nextProps.selections});
+    if (!isEqual(nextProps.selections, this.state.selections)) {
+      this.setState({selections: nextProps.selections});
+      this.dataTable.forceUpdate();
+    }
   }
 
   initCheckboxColumn(onSelectionChanged) {

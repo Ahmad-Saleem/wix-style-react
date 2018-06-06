@@ -74,13 +74,16 @@ describe('Table', () => {
   });
 
   it('should update selection if selection prop has change', async () => {
-    const {driver, wrapper} = createEnzymeDriver(<Table {...defaultProps} selections={[false, false]} showSelection dataHook={dataHook}/>);
-    wrapper.setProps({selections: [true, false]});
+    const selections = [false, false];
+    const {driver, wrapper} = createEnzymeDriver(<Table {...defaultProps} selections={selections} showSelection dataHook={dataHook}/>);
+    selections[0] = true;
+    wrapper.setProps({selections});
     expect(driver.isRowSelected(0)).toBeTruthy();
   });
 
   it('should rerender on data update', () => {
   });
+
   describe('Top checkbox', () => {
     it('should display as checked when all rows are selected', () => {
     });
@@ -144,8 +147,8 @@ describe('Table', () => {
       expect(driver.isHeaderDisplayed()).toBeTruthy();
       expect(driver.isSelectionHeaderDisplayed()).toBeFalsy();
       driver.selectRow(0);
-      // expect(driver.isHeaderDisplayed()).toBeFalsy();
-      // expect(driver.isSelectionHeaderDisplayed()).toBeTruthy();
+      expect(driver.isHeaderDisplayed()).toBeFalsy();
+      expect(driver.isSelectionHeaderDisplayed()).toBeTruthy();
     });
     it('should change from selectionHeader to header when selection removed', () => {
       const driver = createDriver(
@@ -159,8 +162,8 @@ describe('Table', () => {
       expect(driver.isHeaderDisplayed()).toBeFalsy();
       expect(driver.isSelectionHeaderDisplayed()).toBeTruthy();
       driver.selectRow(0);
-      // expect(driver.isHeaderDisplayed()).toBeTruthy();
-      // expect(driver.isSelectionHeaderDisplayed()).toBeFalsy();
+      expect(driver.isHeaderDisplayed()).toBeTruthy();
+      expect(driver.isSelectionHeaderDisplayed()).toBeFalsy();
     });
     it('should display number of selected rows in title', () => {
     });
