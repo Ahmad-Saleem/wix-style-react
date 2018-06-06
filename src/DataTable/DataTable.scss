@@ -13,11 +13,15 @@
   text-align: start; // not supported in IE11 & Edge; 'left' as fallback
   color: $paletteD3;
   border-top: solid 1px $D60;
-  .info-icon {
-    color: $B10;
-    font-size: 18px;
-    padding-left: 6px;
-    transform: translateY(5px);
+  .inline{
+    display: inline-block;
+    position: absolute;
+    .info-icon {
+      color: $B10;
+      font-size: 18px;
+      padding-left: 6px;
+      transform: translateY(-2px);
+    }
   }
 }
 
@@ -81,8 +85,4 @@
       border-bottom: 1px solid $D70;
     }
   }
-}
-
-.inline{
-  display: inline-block;
 }
