@@ -15,7 +15,6 @@ describe('Table', () => {
     const driver = enzymeTableTestkitFactory({wrapper, dataHook});
     return {driver, wrapper};
   };
-
   const defaultProps = {
     id: 'id',
     data: [{a: 'value 1', b: 'value 2'}, {a: 'value 3', b: 'value 4'}],
@@ -26,12 +25,10 @@ describe('Table', () => {
     ],
     rowClass: 'class-name'
   };
-
   const withSelection = {
     selections: [true, false],
     showSelection: true
   };
-
   const defaultHeader = (<div>Header</div>);
   const renderHeader = () => defaultHeader;
   const defaultFooter = (<div>Footer</div>);
@@ -82,6 +79,21 @@ describe('Table', () => {
   });
 
   it('should rerender on data update', () => {
+    const props = {
+      id: 'id',
+      columns: [
+        {title: 'Row Num', render: (row, rowNum) => rowNum},
+        {title: 'A', render: row => row.a},
+        {title: 'B', render: row => row.b}
+      ],
+      rowClass: 'class-name'
+    };
+    const data = [{a: 'value 1', b: 'value 2'}, {a: 'value 3', b: 'value 4'}];
+    const {driver, wrapper} = createEnzymeDriver(<Table {...props} data={data} dataHook={dataHook}/>);
+    const newValue = 'value 1 changed';
+    data[0].a = newValue;
+    wrapper.setProps({data});
+    expect(driver.getCell(0, 1).innerHTML).toEqual(newValue);
   });
 
   describe('Top checkbox', () => {

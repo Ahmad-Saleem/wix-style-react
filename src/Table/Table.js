@@ -16,7 +16,8 @@ export default class Table extends WixComponent {
   constructor(props) {
     super(props);
     this.state = {
-      selections: props.selections.slice()
+      selections: props.selections.slice(),
+      data: props.data.slice()
     };
     this.columns = props.showSelection ? [this.initCheckboxColumn(props.onSelectionChanged), ...props.columns] : props.columns;
   }
@@ -26,8 +27,17 @@ export default class Table extends WixComponent {
   }
 
   componentWillReceiveProps(nextProps) {
+    const newState = {};
     if (!isEqual(nextProps.selections, this.state.selections)) {
-      this.setState({selections: nextProps.selections});
+      newState.selections = nextProps.selections;
+    }
+
+    if (!isEqual(nextProps.data, this.props.data)) {
+      newState.data = nextProps.data;
+    }
+
+    if (newState) {
+      this.setState(newState);
       this.dataTable.forceUpdate();
     }
   }
@@ -63,6 +73,7 @@ export default class Table extends WixComponent {
         <DataTable
           dataHook="table"
           {...this.props}
+          data={this.state.data}
           columns={this.columns}
           ref={dataTable => this.dataTable = dataTable}
           />
