@@ -94,7 +94,6 @@ import '../stories/EndorseContentLayout';
 
 // 10. Tables
 import '../stories/DataTable'; // 10.1 DataTable
-import '../stories/Table'; // 10.2 Table Card
 
 // 11. Pickers and Selectors
 import '../stories/DropdownLayout'; // 11.1 DropdownLayout
@@ -107,6 +106,9 @@ import '../stories/Badge'; // 12.1 Badge
 import '../stories/CounterBadge'; //12.3 CounterBadge
 import '../stories/Highlighter.story.js'; // 12.4 Highlighter
 import '../stories/Tag.story.js'; // 12.5 Tag
+
+// 13. Work in progress
+import '../stories/Table'; // 13.1 Table Card
 
 // TPA
 import '../stories/TPA/Button';

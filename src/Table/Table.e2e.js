@@ -6,7 +6,7 @@ import {createStoryUrl, waitForVisibilityOf} from '../../test/utils/protractor';
 import autoExampleDriver from 'wix-storybook-utils/AutoExampleDriver';
 
 describe('Table', () => {
-  const storyUrl = createStoryUrl({kind: '10. Tables', story: '10.2 Table Card', withExamples: false});
+  const storyUrl = createStoryUrl({kind: '13. Work in progress', story: '13.1 Table Card', withExamples: false});
   const driver = tableTestkitFactory({dataHook: 'storybook-table'});
 
   beforeAll(() => {
@@ -22,7 +22,7 @@ describe('Table', () => {
   });
 
   eyes.it('should display table', async () => {
-    expect(driver.isTableVisible()).toBe(true);
+    expect(driver.getTable().isPresent()).toBe(true);
   });
 
 });

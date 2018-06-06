@@ -37,8 +37,8 @@ const defaultHeader = (
     </Row>
   </div>);
 export default {
-  category: '10. Tables',
-  storyName: '10.2 Table Card',
+  category: '13. Work in progress',
+  storyName: '11.2 Table Card',
 
   component: Table,
   componentPath: '../../src/Table',

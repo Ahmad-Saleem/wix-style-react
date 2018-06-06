@@ -1,5 +1,3 @@
-// import ReactTestUtils from "react-dom/test-utils";
-// import ReactDOM from "react-dom";
 import dataTableDriverFactory from '../DataTable/DataTable.driver';
 import checkboxDriverFactory from '../Checkbox/Checkbox.driver';
 

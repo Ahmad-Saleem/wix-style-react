@@ -1,7 +1,6 @@
 
 const tableDriverFactory = component => ({
-  getTable: () => component.$$('table'),
-  isTableVisible: () => component.$('table').isPresent(),
+  getTable: () => component.$('table'),
   element: () => component
 });
 
