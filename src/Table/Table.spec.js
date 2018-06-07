@@ -117,16 +117,35 @@ describe('Table', () => {
       expect(driver.isTableCheckboxIndeterminate()).toBeTruthy();
     });
 
-    it('should select all row when top checkbox clicked and no checkboxes are checked', () => {
+    it('should select all rows when top checkbox clicked and no checkboxes are checked', () => {
+      const selections = [false, false];
+      const driver = createDriver(<Table {...defaultProps} selections={selections} showSelection/>);
+      driver.selectTableRow();
+      expect(driver.isRowSelected(0)).toBeTruthy();
+      expect(driver.isRowSelected(1)).toBeTruthy();
     });
 
-    it('should select all row when top checkbox clicked and some checkboxes are checked', () => {
+    it('should select all rows when top checkbox clicked and some checkboxes are checked', () => {
+      const selections = [false, true];
+      const driver = createDriver(<Table {...defaultProps} selections={selections} showSelection/>);
+      driver.selectTableRow();
+      expect(driver.isRowSelected(0)).toBeTruthy();
+      expect(driver.isRowSelected(1)).toBeTruthy();
     });
 
-    it('should unselect all row when top checkbox clicked and all checkboxes are checked', () => {
+    it('should unselect all rows when top checkbox clicked and all checkboxes are checked', () => {
+      const selections = [true, true];
+      const driver = createDriver(<Table {...defaultProps} selections={selections} showSelection/>);
+      driver.selectTableRow();
+      expect(driver.isRowSelected(0)).toBeFalsy();
+      expect(driver.isRowSelected(1)).toBeFalsy();
     });
 
     it('should call onSelectionChanged when top checkbox clicked and no checkboxes are checked with correct selection', () => {
+      // const onSelectionChanged = jest.fn();
+      // const driver = createDriver(<Table {...defaultProps} {...withSelection} onSelectionChanged={onSelectionChanged}/>);
+      // driver.selectRow(1);
+      // expect(onSelectionChanged).toHaveBeenCalledWith([true, true]);
     });
 
     it('should call onSelectionChanged when top checkbox clicked and some checkboxes are checked with correct selection', () => {

@@ -18,6 +18,7 @@ const tableDriverFactory = ({element, wrapper, component, eventTrigger}) => {
   return {
     ...dataTableDriver,
     selectRow: index => getRowCheckboxDriver(index).click(),
+    selectTableRow: () => getTableCheckboxDriver().click(),
     isRowCheckboxVisible: index => getRowCheckboxDriver(index).exists(),
     isTableCheckboxVisible: () => getTableCheckboxDriver().exists(),
     isRowSelected: index => getRowCheckboxDriver(index).isChecked(),

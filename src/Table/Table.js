@@ -61,6 +61,10 @@ export default class Table extends WixComponent {
     }
   }
 
+  toggleAll(enable) {
+    return this.state.selections.map(() => enable);
+  }
+
   initCheckboxColumn(onSelectionChanged) {
     return {
       title: () => <Checkbox
@@ -68,6 +72,17 @@ export default class Table extends WixComponent {
         checked={this.state.tableCheckbox === this.checkboxState.checked}
         indeterminate={this.state.tableCheckbox === this.checkboxState.indeterminate}
         onChange={() => {
+          if (this.state.tableCheckbox === this.checkboxState.indeterminate) {
+            const selections = this.toggleAll(true);
+            this.setState({selections, tableCheckbox: this.checkboxState.checked});
+          } else if (this.state.tableCheckbox === this.checkboxState.checked) {
+            const selections = this.toggleAll(false);
+            this.setState({selections, tableCheckbox: this.checkboxState.unchecked});
+          } else {
+            const selections = this.toggleAll(true);
+            this.setState({selections, tableCheckbox: this.checkboxState.checked});
+          }
+          this.dataTable.forceUpdate();
         }}
         />,
       render: (row, rowNum) => <Checkbox
