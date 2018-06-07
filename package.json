@@ -56,8 +56,8 @@
   },
   "homepage": "https://github.com/wix/wix-style-react#readme",
   "devDependencies": {
-    "@storybook/addon-options": "^3.3.7",
-    "@storybook/react": "^3.3.7",
+    "@storybook/addon-options": "^4.0.0-alpha.7",
+    "@storybook/react": "^4.0.0-alpha.8",
     "@types/react": "^15.5.4",
     "autosuggest-highlight": "^3.1.0",
     "babel-polyfill": "^6.23.0",
@@ -87,7 +87,7 @@
     "svg2react-icon": "^1.0.0",
     "wait-for-cond": "^1.0.3",
     "wix-storybook-utils": "^1.0.0",
-    "yoshi": "^1.2.0"
+    "yoshi": "^2.8.3"
   },
   "peerDependencies": {
     "react": "^15.0.0",
