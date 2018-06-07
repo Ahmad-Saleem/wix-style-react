@@ -35,9 +35,9 @@ export default class Form extends Component {
       <Range dataHook={this.props.dataHook} required={this.props.required} info={this.props.info}>
         {this.props.withLabel ? <Label {...this.props.label}/> : null}
         {(this.props.rangeType.value === 'InputRange') ?
-          <Input dataHook="first-item" id="first" {...this.props.firstInput} noRightBorderRadius/> : <DatePicker dataHook="first-item" placeholderText="From" id="fromDate" {...this.props.firstDate} customInput={<Input noRightBorderRadius/>}/>}
+          <Input dataHook="first-item" id="first" {...this.props.firstInput}/> : <DatePicker dataHook="first-item" placeholderText="From" id="fromDate" {...this.props.firstDate}/>}
         {(this.props.rangeType.value === 'InputRange') ?
-          <Input dataHook="last-item" id="last" {...this.props.lastInput} noLeftBorderRadius/> : <DatePicker dataHook="last-item" placeholderText="To" id="toDate" {...this.props.lastDate} customInput={<Input noLeftBorderRadius/>}/>}
+          <Input dataHook="last-item" id="last" {...this.props.lastInput}/> : <DatePicker dataHook="last-item" placeholderText="To" id="toDate" {...this.props.lastDate}/>}
       </Range>
     );
   }

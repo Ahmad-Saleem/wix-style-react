@@ -4,6 +4,8 @@ import WixComponent from '../../BaseComponents/WixComponent';
 import styles from './RangeInputWithLabelComposite.scss';
 import classNames from 'classnames';
 import FieldLabelAttributes from '../../FieldLabelAttributes/FieldLabelAttributes';
+import Input from '../../Input';
+
 class RangeInputWithLabelComposite extends WixComponent {
   constructor(props) {
     super(props);
@@ -81,8 +83,8 @@ class RangeInputWithLabelComposite extends WixComponent {
     return (<div className={styles.wrapper}>
       {label}
       <div className={inputWrapperClassNames}>
-        { React.cloneElement(firstInput, additionalFirstInputProps)}
-        { React.cloneElement(lastInput, additionalLastInputProps)}
+        { React.cloneElement(firstInput, rangeType === 'DatePicker' ? {inputProps: additionalFirstInputProps} : additionalFirstInputProps)}
+        { React.cloneElement(lastInput, rangeType === 'DatePicker' ? {inputProps: additionalLastInputProps} : additionalLastInputProps)}
       </div>
     </div>);
   }
