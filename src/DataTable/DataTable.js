@@ -260,7 +260,7 @@ class TableHeader extends Component {
         key={colNum}
         {...optionalHeaderCellProps}
         >
-        {column.title}{this.renderSortingArrow(column.sortDescending, colNum)}
+        {typeof column.title === 'function' ? column.title() : column.title}{this.renderSortingArrow(column.sortDescending, colNum)}
       </th>);
   };
 
@@ -308,7 +308,8 @@ DataTable.propTypes = {
   columns: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.oneOfType([
       PropTypes.node,
-      PropTypes.string
+      PropTypes.string,
+      PropTypes.func
     ]).isRequired,
     render: PropTypes.func.isRequired,
     sortable: PropTypes.bool,

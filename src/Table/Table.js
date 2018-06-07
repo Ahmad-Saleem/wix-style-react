@@ -63,12 +63,11 @@ export default class Table extends WixComponent {
 
   initCheckboxColumn(onSelectionChanged) {
     return {
-      title: <Checkbox
+      title: () => <Checkbox
         dataHook="table-select"
         checked={this.state.tableCheckbox === this.checkboxState.checked}
         indeterminate={this.state.tableCheckbox === this.checkboxState.indeterminate}
         onChange={() => {
-
         }}
         />,
       render: (row, rowNum) => <Checkbox
@@ -77,7 +76,7 @@ export default class Table extends WixComponent {
         onChange={() => {
           const selections = this.state.selections;
           selections[rowNum] = !selections[rowNum];
-          this.setState({selections});
+          this.setState({selections, tableCheckbox: this.getNextCheckboxState(selections)});
           this.dataTable.forceUpdate();
           onSelectionChanged && onSelectionChanged(selections);
         }}
