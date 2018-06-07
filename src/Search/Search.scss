@@ -1,12 +1,47 @@
 @import '../common';
 
-.leftIcon {
-    margin: 0 4px 0 3px;
-    color: $B10;
+$iconSize: 22px;
 
-    & > svg {
-        display: block;
-        width: 22px;
-        height: 22px;
+.leftIcon {
+  margin: 0 5px 0 5px;
+  color: $B10;
+
+  & > svg {
+    display: block;
+    width: $iconSize;
+    height: $iconSize;
+  }
+}
+
+.expandableStyles {
+  > div {
+    > div {
+      > div {
+        transition: width .3s;
+      }
     }
+  }
+}
+
+.collapsed {
+  cursor: pointer;
+
+  [data-input-parent] {
+    > div:nth-of-type(1) {
+      border-color: transparent;
+      width: 14 + $iconSize;
+
+      input {
+        min-width: 0 !important;
+      }
+    }
+  }
+}
+
+.expanded {
+  [data-input-parent] {
+    > div:nth-of-type(1) {
+      width: 100%;
+    }
+  }
 }

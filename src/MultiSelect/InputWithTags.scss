@@ -56,11 +56,6 @@
 
   @include FocusBox;
 
-  // Override <Input>'s default focus style
-  [data-hook="inputWithTags-input"] {
-    box-shadow: none;
-  }
-
   &.error {
     @include FocusBoxError;
   }

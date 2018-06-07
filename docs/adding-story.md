@@ -59,11 +59,25 @@ export default {
 }
 ```
 
+### README
+
+If a `README.md` file is present alongside the component's source, then it will be displayed at the top of the Usage tab (Instead of the automatic component name title, so you need to add a Title in the README)
+
+
+### Story Configuration Properties
 ---
 
 #### `category` - `string` required
 
 Name of Storybook "section" under which this story will be placed (e.g. `Core`, `6. Navigation`, `3. Inputs`)
+
+---
+
+#### `storyName` - `string`
+
+Name of the story in sidebar. If omitted, it will use `displayName` of
+the component.
+
 
 ---
 
@@ -85,10 +99,10 @@ export default {
 
 #### `componentPath` - `string` required
 
-a string of relative path to component source. This is required in order
+A string of relative path to component source. This is required in order
 for automatic documentation to know where to start parsing.
 
-even though just folder is enough, it is better to provide exact path to file.
+Even though just folder is enough, it is better to provide exact path to file.
 
 ```js
 import MyComponent from './src/components/MyComponent';
@@ -100,15 +114,22 @@ export default {
 }
 ```
 
----
-
-#### `storyName` - `string`
-
-Name of the story in sidebar. If omitted, it will use `displayName` of
-the component.
+NOTE: when proxing a component to another library (e.g WSR->WUB), then please give the path through the `node_modules` to the original source file.
 
 ---
 
+#### `exampleImport` - `string`
+
+An example of an import statement to be used to import the component. (appears in a code block between the README and the Playground.)
+When supplied, then it overwrites the automatic import statement.
+
+---
+
+#### `displayName` - `string`
+
+An override for the component's displayName.
+
+---
 #### `componentProps` - `object` or `function`
 
 Props that will be passed to `component`. Either given as-is with `object` or computed in `function`.

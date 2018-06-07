@@ -203,5 +203,6 @@ export {
   headingTestkitFactory,
   toggleSwitchTestkitFactory,
   textTestkitFactory,
-  labelTestkitFactory
+  labelTestkitFactory,
+  floatingHelperTestkitFactory
 } from 'wix-ui-backoffice/dist/src/testkit/enzyme';

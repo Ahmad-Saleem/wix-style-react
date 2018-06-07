@@ -71,8 +71,7 @@ import '../stories/TextLink/index.story.js'; // 5.8 Text Link
 
 // 6. Navigation
 import '../stories/SideMenu'; // 6.1 SideMenu
-import '../stories/Breadcrubms/CompositeStory'; // 6.2 Breadcrumbs
-import '../stories/Breadcrubms'; // 6.2 + Breadcrumbs
+import '../stories/Breadcrumbs/index.story.js'; // 6.2 + Breadcrumbs
 import '../stories/Tabs'; // 6.3 Tabs
 
 
@@ -84,6 +83,8 @@ import '../stories/Tooltip/Composite/CompositeStory';
 // 8. Notification Bars
 // 8.1 Standard, 8.2 Error, 8.3 Success, 8.4 Warning, 8.5 Premium
 import '../stories/Notification';
+import '../stories/FloatingHelper/FloatingHelper.story.js'; // 8.6 FloatingHelper
+import '../stories/FloatingHelperContent/FloatingHelperContent.story.js'; // 8.6 + FloatingHelper.Content
 import '../stories/SectionHelper.story.js'; // 8.7 SectionHelper
 
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import InputWithOptions from '../InputWithOptions';
 import SearchIcon from 'wix-ui-icons-common/Search';
@@ -15,19 +16,24 @@ export default class Search extends WixComponent {
 
   static propTypes = {
     ...InputWithOptions.propTypes,
-    placeholder: PropTypes.string
+    placeholder: PropTypes.string,
+    expandable: PropTypes.bool
   };
 
   static defaultProps = {
     ...InputWithOptions.defaultProps,
-    placeholder: 'Search'
+    placeholder: 'Search',
+    expandable: false
   };
 
   constructor(props) {
     super(props);
 
+    const initialValue = (!this._isControlled && props.defaultValue) || '';
+
     this.state = {
-      inputValue: (!this._isControlled && props.defaultValue) || ''
+      inputValue: initialValue,
+      collapsed: props.expandable && initialValue === '' && !props.autoFocus
     };
   }
 
@@ -59,20 +65,94 @@ export default class Search extends WixComponent {
     }
   };
 
+  _onClear = () => {
+    const {
+      onClear
+    } = this.props;
+
+    if (!this.state.collapsed && this.props.expandable) {
+      this.setState({
+        collapsed: true
+      });
+    }
+
+    onClear && onClear();
+  };
+
+  _currentValue = () => {
+    let value;
+
+    if (this._isControlled) {
+      value = this.props.value;
+    } else {
+      value = this.state.inputValue;
+    }
+
+    return value;
+  };
+
+  _onBlur = () => {
+    const {
+      onBlur
+    } = this.props;
+
+    if (!this.state.collapsed && this.props.expandable) {
+      const value = this._currentValue();
+
+      if (value === '') {
+        this.setState({
+          collapsed: true
+        });
+      }
+    }
+
+    onBlur && onBlur();
+  };
+
+  _onWrapperClick = () => {
+    if (this.props.expandable && this.state.collapsed) {
+      this.refs.searchInput.input.focus();
+      this.setState({collapsed: false});
+    }
+  };
+
+  _onWrapperMouseDown = e => {
+    // We need to capture mouse down and prevent it's event if the input
+    // is already open
+    if (this.props.expandable && !this.state.collapsed) {
+      const value = this._currentValue();
+
+      if (value === '') {
+        e.preventDefault();
+      }
+    }
+  };
+
   render() {
+    const wrapperClasses = classNames({
+      [styles.expandableStyles]: this.props.expandable,
+      [styles.collapsed]: this.state.collapsed && this.props.expandable,
+      [styles.expanded]: !this.state.collapsed && this.props.expandable
+    });
+
     return (
-      <InputWithOptions
-        {...this.props}
-        roundInput
-        prefix={<div className={styles.leftIcon}><SearchIcon/></div>}
-        menuArrow={false}
-        clearButton
-        closeOnSelect
-        showOptionsIfEmptyInput={false}
-        options={this._filteredOptions}
-        onChange={this._onChange}
-        highlight
-        />
+      <div className={wrapperClasses} onClick={this._onWrapperClick} onMouseDown={this._onWrapperMouseDown}>
+        <InputWithOptions
+          {...this.props}
+          ref="searchInput"
+          roundInput
+          prefix={<div className={styles.leftIcon}><SearchIcon/></div>}
+          menuArrow={false}
+          clearButton
+          closeOnSelect
+          showOptionsIfEmptyInput={false}
+          options={this._filteredOptions}
+          onClear={this._onClear}
+          onChange={this._onChange}
+          onBlur={this._onBlur}
+          highlight
+          />
+      </div>
     );
   }
 }

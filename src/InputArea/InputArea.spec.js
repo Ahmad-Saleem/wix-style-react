@@ -1,7 +1,7 @@
 import React from 'react';
 import inputAreaDriverFactory from './InputArea.driver';
 import InputArea from './InputArea';
-import {createDriverFactory} from '../test-common';
+import {createDriverFactory, resolveIn} from '../test-common';
 import {inputAreaTestkitFactory, tooltipTestkitFactory} from '../../testkit';
 import {inputAreaTestkitFactory as enzymeInputAreaTestkitFactory} from '../../testkit/enzyme';
 import sinon from 'sinon';
@@ -297,13 +297,6 @@ describe('InputArea', () => {
 
 
   describe('test tooltip', () => {
-
-    const resolveIn = timeout =>
-      new Promise(resolve => {
-        setTimeout(() => {
-          resolve({});
-        }, timeout);
-      });
 
     describe('onTooltipShow attribute', () => {
       it('should not display the tooltip by default', () => {

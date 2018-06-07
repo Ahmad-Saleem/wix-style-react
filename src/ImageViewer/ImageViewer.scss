@@ -5,6 +5,7 @@
 }
 
 .container {
+  @include FontRoman();
   width: 204.7px;
   height: 144px;
   border-radius: 8px;
@@ -26,8 +27,8 @@
 .dashed-border {
   border: dashed 1px rgba(78, 183, 245, 0.5);
   border-radius: 3px;
-  width: 90%;
-  height: 85%;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,8 +43,6 @@
 
 .plus-icon {
   color: rgb(78, 183, 245);
-  height: 47px;
-  width: 47px;
   position: absolute;
 }
 
@@ -87,34 +86,23 @@
   color: white;
   justify-content: center;
   display: flex;
-  height: 38%;
+  margin: auto;
   align-items: baseline;
   opacity: 0;
   transition: opacity .1s linear;
-}
 
-.button {
-  transition: background .1s linear;
-  background: rgba(255, 255, 255, 0);
-  height: 36px;
-  width: 36px;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.3);
-  }
-
-  &:first-child {
-    margin-right: 20px;
+  >:first-child {
+    margin-right: 12px;
   }
 }
 
 .container {
+  box-sizing: border-box;
 
+  &.add-padding{
+    padding: 12px;
+  }
+  
   &.has-logo {
     .add-logo {
       display: none;
@@ -134,6 +122,29 @@
 
     .image-background {
       background-color: rgba(32, 69, 94, .8);
+    }
+  }
+}
+
+.has-error{
+  border: 1px solid $R10;
+
+  .exclamation {
+    position: absolute;
+    right: 9px;
+    top: 9px;
+    background-color: $R10;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+  
+    > svg {
+      width: 10px;
+      height: 10px;
     }
   }
 }

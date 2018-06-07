@@ -1,8 +1,8 @@
 import React from 'react';
 import ImageViewer from './ImageViewer';
 import ImageViewerDriverFactory from './ImageViewer.driver';
-import {createDriverFactory} from '../test-common';
-import {imageViewerTestkitFactory} from '../../testkit';
+import {createDriverFactory, resolveIn} from '../test-common';
+import {imageViewerTestkitFactory, tooltipTestkitFactory} from '../../testkit';
 import {imageViewerTestkitFactory as enzymeImageViewerTestkitFactory} from '../../testkit/enzyme';
 import {mount} from 'enzyme';
 import ReactTestUtils from 'react-dom/test-utils';
@@ -85,6 +85,45 @@ describe('ImageViewer', () => {
       expect(driver.getContainerStyles()).toEqual(null);
     });
   });
+
+
+  describe('Error state', () => {
+
+    it('should not display error icon by defualt', () => {
+
+      props = {
+        imageUrl: '',
+        width: 300,
+        height: 300
+      };
+
+      driver = createDriver(<ImageViewer {...props}/>);
+      expect(driver.isErrorVisible()).toBeFalsy();
+    });
+
+    it('should display error icon on error with the correct message', () => {
+
+      props = {
+        imageUrl: '',
+        width: 300,
+        height: 300,
+        error: true,
+        errorMessage: 'Oh My God!'
+      };
+
+      driver = createDriver(<ImageViewer {...props}/>);
+      const wrapper = driver.getElement();
+      const errorTooltipDriver = tooltipTestkitFactory({wrapper, dataHook: 'error-tooltip'});
+      errorTooltipDriver.mouseEnter();
+      return resolveIn(50)
+        .then(() => {
+          expect(errorTooltipDriver.isShown()).toBeTruthy();
+          expect(errorTooltipDriver.getContent()).toEqual(props.errorMessage);
+        });
+    });
+
+  });
+
 
   describe('testkit', () => {
     it('should exist', () => {

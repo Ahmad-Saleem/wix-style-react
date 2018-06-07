@@ -30,28 +30,51 @@ Note that we used to have `appearance="T1.1"` by default. Now with the new API t
 
 ### Appearances updates
 `<Text appearance="T1">` --> `<Text>`
+
 `<Text appearance="T1.1">` --> `<Text secondary>`
+
 `<Text appearance="T1.2">` —> `<Text light>`
+
 `<Text appearance="T1.3">` —> `<Text><TextLink>go to...</TextLink><Text>` (render Link component as a children of the Text)
+
 `<Text appearance="T1.4">` —> `<Text secondary light>` (The color have slightly changed from #c8c8c8 (GR10) to #b6c1cd (D50))
 
+
+
 `<Text appearance="T2">` --> `<Text bold>`
+
 `<Text appearance="T2.1">` --> `<Text bold secondary light>` (The color have slightly changed from #c8c8c8 (GR10) to #b6c1cd (D50))
+
 `<Text appearance="T2.2">` —> `<Text bold light>`
+
 `<Text appearance="T2.3">` —> DEPRECATED
 
+
+
 `<Text appearance="T3">` --> `<Text size="small">`
+
 `<Text appearance="T3.1">` --> `<Text size="small" secondary>`
+
 `<Text appearance="T3.2">` —> `<Text size="small" light>`
-`<Text appearance="T3.3">` —> `<Text size="small"><TextLink>go to...</TextLink><Text>` (render Link component as a children of the Text)
-`<Text appearance="T3.4">` —> `<Text size="small" secondary light>` (The color have slightly changed from #c8c8c8 (GR10) to #b6c1cd (D50))
+
+`<Text appearance="T3.3">` —> `<Text size="small"><TextLink>go to...</TextLink><Text>` (render Link component as a children of 
+the Text)
+
+`<Text appearance="T3.4">` —> `<Text size="small" secondary light>` (The color have slightly changed from #c8c8c8 (GR10) to 
+#b6c1cd (D50))
+
 
 `<Text appearance="T4">` --> `<Text bold size="small">`
+
 `<Text appearance="T4.1">` --> `<Text bold size="small" secondary>`
+
 `<Text appearance="T4.2">` —> `<Text bold size="small" light>`
+
 `<Text appearance="T4.3">` —> DEPRECATED
 
- `T5.*` are deprecated. If you use them, you might want to use `<Badge type=“transparent”>`
+
+
+`T5.*` are deprecated. If you use them, you might want to use `<Badge type=“transparent”>`
 
 ### Testkit Deprecated methods:
 - `getClassName` is deprecated.
@@ -64,9 +87,15 @@ We used to have `H0` - `H4`, which got mapped under the hood to html `h1` - `h5`
 
 ### Appearances updates
 `<Text appearance="H0">` -> DEPRECATED
+
 `<Text appearance="H1">` -> `<Heading appearance="H1">`
+
 `<Text appearance="H1.1">` -> `<Heading appearance="H1" light>`
+
 `<Text appearance="H2">` -> `<Heading appearance="H2">`
+
 `<Text appearance="H2.1">` -> `<Heading appearance="H2" light>`
+
 `<Text appearance="H3">` -> `<Heading appearance="H3">`
+
 `<Text appearance="H4">` -> `<Heading appearance="H4">`

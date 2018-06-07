@@ -16,4 +16,4 @@ storiesOf('Introduction', module)
   .add('Contribution', () => <Markdown source={Contribution}/>)
   .add('TPA', () => <Markdown source={TPA}/>)
   .add('Usage Without Yoshi', () => <Markdown source={UsageWithoutYoshiReadme}/>)
-  .add('Documenting components', () => <Markdown source={AddingStory}/>);
+  .add('Documenting components (AutoDocs)', () => <Markdown source={AddingStory}/>);

@@ -3,7 +3,7 @@ import sinon from 'sinon';
 
 import inputDriverFactory from './Input.driver';
 import Input from '.';
-import {createDriverFactory} from '../test-common';
+import {createDriverFactory, resolveIn} from '../test-common';
 import {inputTestkitFactory, tooltipTestkitFactory} from '../../testkit';
 import {inputTestkitFactory as enzymeInputTestkitFactory} from '../../testkit/enzyme';
 import {isTestkitExists, isEnzymeTestkitExists} from '../../testkit/test-common';
@@ -15,12 +15,6 @@ describe('Input', () => {
   const ControlledInput = makeControlled(Input);
 
   describe('test tooltip', () => {
-    const resolveIn = timeout =>
-      new Promise(resolve => {
-        setTimeout(() => {
-          resolve({});
-        }, timeout);
-      });
 
     it('should dispaly the error tooltip on hover', () => {
       const driver = createDriver(<Input error errorMessage="I'm the error message"/>);
