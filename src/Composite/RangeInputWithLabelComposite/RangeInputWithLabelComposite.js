@@ -46,6 +46,7 @@ class RangeInputWithLabelComposite extends WixComponent {
 
   render() {
     const children = Children.toArray(this.props.children);
+    const rangeType = this.props.children[1].type.displayName;
     const label = children.length === 3 ? (
       <div className={styles.label}>
         {children[0]}
@@ -56,6 +57,7 @@ class RangeInputWithLabelComposite extends WixComponent {
     const lastInput = children.length === 3 ? children[2] : children[1];
 
     const additionalFirstInputProps = {
+      className: (rangeType === 'DatePicker') ? styles.firstDate : styles.firstinput,
       noRightBorderRadius: true,
       onKeyDown: e => this._doKeyDown(e),
       onFocus: e => this._handleFocusFirst(e),
@@ -63,6 +65,7 @@ class RangeInputWithLabelComposite extends WixComponent {
     };
 
     const additionalLastInputProps = {
+      className: (rangeType === 'DatePicker') ? styles.lastDate : styles.lastinput,
       noLeftBorderRadius: true,
       onKeyDown: e => this._doKeyDown(e),
       onFocus: e => this._handleFocusLast(e),
@@ -70,6 +73,8 @@ class RangeInputWithLabelComposite extends WixComponent {
     };
 
     const inputWrapperClassNames = classNames({
+      [styles.hasFocusFirst]: this.state.hasFocusFirst,
+      [styles.hasFocusLast]: this.state.hasFocusLast,
       [styles.inputs]: true
     });
 
