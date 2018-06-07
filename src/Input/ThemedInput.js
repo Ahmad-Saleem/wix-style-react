@@ -35,14 +35,13 @@ class ThemedInput extends Input {
       [styles.roundInput]: roundInput,
       [styles.hasValue]: (value && value.length) || (this.input && !!this.input.value),
       [styles.noRightBorderRadius]: noRightBorderRadius,
-      [styles.noLeftBorderRadius]: noLeftBorderRadius,
-      className
+      [styles.noLeftBorderRadius]: noLeftBorderRadius
     };
 
     const placeholder = this.props.placeholder;
     return (
       <div
-        className={classNames(classes, styles.root, styles[`theme-${theme}`], styles[`size-${size}${withSelection ? '-with-selection' : ''}`])}
+        className={classNames(classes, styles.root, styles[`theme-${theme}`], styles[`size-${size}${withSelection ? '-with-selection' : ''}`], className)}
         data-hook={dataHook}
         >
         {(theme === 'amaterial') &&
