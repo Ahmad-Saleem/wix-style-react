@@ -4,7 +4,6 @@ import WixComponent from '../../BaseComponents/WixComponent';
 import styles from './RangeInputWithLabelComposite.scss';
 import classNames from 'classnames';
 import FieldLabelAttributes from '../../FieldLabelAttributes/FieldLabelAttributes';
-import Input from '../../Input';
 
 class RangeInputWithLabelComposite extends WixComponent {
   constructor(props) {
