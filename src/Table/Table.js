@@ -118,12 +118,18 @@ Table.defaultProps = {
 
 Table.propTypes = {
   ...DataTable.propTypes,
+  /** Identify if to show selection column */
   showSelection: PropTypes.bool,
+  /** Array of rows selections values */
   selections: PropTypes.arrayOf(PropTypes.bool),
+  /** Will run when row checkbox click. Receive the updated selection array */
   onSelectionChanged: PropTypes.func,
+  /** The header that appear above the table */
   header: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
-  footer: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
-  selectionHeader: PropTypes.oneOfType([PropTypes.func, PropTypes.node])
+  /** The header that appear above the table when there is selected rows */
+  selectionHeader: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
+  /** The footer that appear below the table */
+  footer: PropTypes.oneOfType([PropTypes.func, PropTypes.node])
 };
 
 
