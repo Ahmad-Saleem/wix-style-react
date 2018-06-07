@@ -300,6 +300,9 @@ Input.propTypes = {
   /** Displays clear button (X) on a non-empty input */
   clearButton: PropTypes.bool,
 
+  /** A single CSS class name to be appended to ther Input's wrapper element. */
+  className: PropTypes.string,
+
   name: PropTypes.string,
 
   /** When set to true, this input will have no rounded corners on its left */

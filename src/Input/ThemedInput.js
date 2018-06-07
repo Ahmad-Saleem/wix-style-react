@@ -19,6 +19,7 @@ class ThemedInput extends Input {
       forceHover,
       forceFocus,
       roundInput,
+      className,
       noLeftBorderRadius,
       noRightBorderRadius,
       value,
@@ -34,7 +35,8 @@ class ThemedInput extends Input {
       [styles.roundInput]: roundInput,
       [styles.hasValue]: (value && value.length) || (this.input && !!this.input.value),
       [styles.noRightBorderRadius]: noRightBorderRadius,
-      [styles.noLeftBorderRadius]: noLeftBorderRadius
+      [styles.noLeftBorderRadius]: noLeftBorderRadius,
+      className
     };
 
     const placeholder = this.props.placeholder;
