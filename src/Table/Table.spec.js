@@ -98,11 +98,25 @@ describe('Table', () => {
 
   describe('Top checkbox', () => {
     it('should display as checked when all rows are selected', () => {
+      const selections = [true, true];
+      const driver = createDriver(<Table {...defaultProps} selections={selections} showSelection/>);
+      expect(driver.isTableCheckboxSelected()).toBeTruthy();
+      expect(driver.isTableCheckboxIndeterminate()).toBeFalsy();
     });
+
     it('should display as unchecked when no rows are selected', () => {
+      const selections = [false, false];
+      const driver = createDriver(<Table {...defaultProps} selections={selections} showSelection/>);
+      expect(driver.isTableCheckboxSelected()).toBeFalsy();
+      expect(driver.isTableCheckboxIndeterminate()).toBeFalsy();
     });
+
     it('should display as partial when some rows are selected', () => {
+      const selections = [false, true];
+      const driver = createDriver(<Table {...defaultProps} selections={selections} showSelection/>);
+      expect(driver.isTableCheckboxIndeterminate()).toBeTruthy();
     });
+
     it('should select all row when clicked and no checkboxes are checked', () => {
     });
     it('should select all row when clicked and some checkboxes are checked', () => {

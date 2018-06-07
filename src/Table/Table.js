@@ -10,16 +10,36 @@ import isEqual from 'lodash/isEqual';
  * Search component with suggestions based on input value listed in dropdown
  */
 export default class Table extends WixComponent {
+  static displayName = 'Table';
+  static checkboxState;
   columns;
   state = {selections: []};
 
   constructor(props) {
     super(props);
+    this.checkboxState = {
+      checked: 'checked',
+      unchecked: 'unchecked',
+      indeterminate: 'indeterminate'
+    };
+    const selections = props.selections.slice();
     this.state = {
-      selections: props.selections.slice(),
-      data: props.data.slice()
+      selections,
+      data: props.data.slice(),
+      tableCheckbox: this.getNextCheckboxState(selections)
     };
     this.columns = props.showSelection ? [this.initCheckboxColumn(props.onSelectionChanged), ...props.columns] : props.columns;
+  }
+
+  getSelectionsCount(selections) {
+    return selections.reduce((total, current) => current ? total + 1 : total, 0);
+  }
+
+  getNextCheckboxState(selections) {
+    const numOfSelected = this.getSelectionsCount(selections);
+    const numOfRows = selections.length;
+    return numOfSelected === 0 ? this.checkboxState.unchecked :
+      numOfSelected === numOfRows ? this.checkboxState.checked : this.checkboxState.indeterminate;
   }
 
   shouldComponentUpdate() {
@@ -44,7 +64,14 @@ export default class Table extends WixComponent {
 
   initCheckboxColumn(onSelectionChanged) {
     return {
-      title: <Checkbox dataHook="table-select"/>,
+      title: <Checkbox
+        dataHook="table-select"
+        checked={this.state.tableCheckbox === this.checkboxState.checked}
+        indeterminate={this.state.tableCheckbox === this.checkboxState.indeterminate}
+        onChange={() => {
+
+        }}
+        />,
       render: (row, rowNum) => <Checkbox
         dataHook="row-select"
         checked={this.state.selections[rowNum]}
@@ -61,7 +88,7 @@ export default class Table extends WixComponent {
 
   render() {
     const {header, footer, selectionHeader} = this.props;
-    const selectionCount = this.state.selections.reduce((total, current) => current ? total + 1 : total, 0);
+    const selectionCount = this.getSelectionsCount(this.state.selections);
     return (
       <div>
         {header && !selectionCount && <div className={s.header} data-hook="table-header">

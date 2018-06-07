@@ -21,6 +21,8 @@ const tableDriverFactory = ({element, wrapper, component, eventTrigger}) => {
     isRowCheckboxVisible: index => getRowCheckboxDriver(index).exists(),
     isTableCheckboxVisible: () => getTableCheckboxDriver().exists(),
     isRowSelected: index => getRowCheckboxDriver(index).isChecked(),
+    isTableCheckboxSelected: () => getTableCheckboxDriver().isChecked(),
+    isTableCheckboxIndeterminate: () => getTableCheckboxDriver().isIndeterminate(),
     isHeaderDisplayed: () => !!getHeader(),
     isSelectionHeaderDisplayed: () => !!getSelectionHeader(),
     isFooterDisplayed: () => !!getFooter()
