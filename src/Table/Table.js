@@ -10,7 +10,6 @@ import isEqual from 'lodash/isEqual';
  * Search component with suggestions based on input value listed in dropdown
  */
 export default class Table extends WixComponent {
-  static displayName = 'Table';
   static checkboxState;
   columns;
   state = {selections: []};
