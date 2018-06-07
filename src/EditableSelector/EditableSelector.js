@@ -94,25 +94,25 @@ class EditableSelector extends WixComponent {
         {title && <div className={styles.title} data-hook="editable-selector-title"><Text appearance="T2">{title}</Text></div>}
         <div>
           {options.map((option, index) =>
-          this.state.editingRow === index ? this.renderInput(option.title, index) :
-          <div data-hook="editable-selector-row" className={styles.row} key={index}>
-            <Selector
-              dataHook="editable-selector-item"
-              id={index}
-              title={option.title}
-              isSelected={option.isSelected}
-              toggleType={toggleType}
-              onToggle={id => this.onOptionToggle(id)}
-              />
-            <div className={styles.optionMenu}>
-              <ButtonWithOptions.Button onClick={() => this.deleteItem(index)} dataHook="delete-item" type="button" height="small" theme="icon-greybackground">
-                <Trash3 size="15px"/>
-              </ButtonWithOptions.Button>
-              <ButtonWithOptions.Button onClick={() => this.editItem(index)} dataHook="edit-item" height="small" theme="fullblue">
-                {editButtonText}
-              </ButtonWithOptions.Button>
+            this.state.editingRow === index ? this.renderInput(option.title, index) :
+            <div data-hook="editable-selector-row" className={styles.row} key={index}>
+              <Selector
+                dataHook="editable-selector-item"
+                id={index}
+                title={option.title}
+                isSelected={option.isSelected}
+                toggleType={toggleType}
+                onToggle={id => this.onOptionToggle(id)}
+                />
+              <div className={styles.optionMenu}>
+                <ButtonWithOptions.Button onClick={() => this.deleteItem(index)} dataHook="delete-item" type="button" height="small" theme="icon-greybackground">
+                  <Trash3 size="15px"/>
+                </ButtonWithOptions.Button>
+                <ButtonWithOptions.Button onClick={() => this.editItem(index)} dataHook="edit-item" height="small" theme="fullblue">
+                  {editButtonText}
+                </ButtonWithOptions.Button>
+              </div>
             </div>
-          </div>
           )}
         </div>
         {this.state.addingNewRow && this.renderInput()}

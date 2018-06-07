@@ -38,7 +38,7 @@ export default class Form extends Component {
           {...this.props.input}
           value={this.state.value}
           options={[{id: 0, value: 'Option 1'},
-                    {id: 1, value: 'Option 2'}]}
+            {id: 1, value: 'Option 2'}]}
           onChange={e => this.setState({value: e.target.value})}
           />
       </DropdownComposite>

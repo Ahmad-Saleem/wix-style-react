@@ -106,17 +106,17 @@ class ExampleStandard extends Component {
             (this.state.actionButton.type === 'none') ? null :
             <div>
               {
-                this.state.actionButton.type !== 'textLink' ? null :
-                <div className={styles.option}>
-                  <Label>Link</Label>
-                  <div className={styles.flex}>
-                    <Input
-                      value={this.state.actionButton.link} size="small"
-                      onChange={event => this.setComponentState('actionButton', {link: event.target.value})}
-                      />
+                  this.state.actionButton.type !== 'textLink' ? null :
+                  <div className={styles.option}>
+                    <Label>Link</Label>
+                    <div className={styles.flex}>
+                      <Input
+                        value={this.state.actionButton.link} size="small"
+                        onChange={event => this.setComponentState('actionButton', {link: event.target.value})}
+                        />
+                    </div>
                   </div>
-                </div>
-              }
+                }
               <div className={styles.option}>
                 <Label>Text</Label>
                 <div className={styles.flex}>

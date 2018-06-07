@@ -6,7 +6,7 @@ export const BUTTON_TYPES = ['bold', 'italic', 'underline', 'link', 'unordered-l
 const richTextAreaDriverFactory = component => {
 
   const getToolbarButton = buttonIndex => component.$('[data-hook="toolbar"]')
-  .$(`[data-hook="rich-text-area-button-${BUTTON_TYPES[buttonIndex]}"]`);
+    .$(`[data-hook="rich-text-area-button-${BUTTON_TYPES[buttonIndex]}"]`);
 
   return {
     element: () => component,

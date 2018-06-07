@@ -2,16 +2,16 @@ import React from 'react';
 import SideBar from 'wix-style-react/SideBar';
 
 const items = [
-    {title: 'Home', id: '1'},
+  {title: 'Home', id: '1'},
   {title: 'Submenu1', id: '2', children: [
-        {title: 'Submenu1.1', id: '2.1'},
-        {title: 'Submenu1.2', id: '2.2'},
-        {title: 'Submenu1.3', id: '2.3'}
+    {title: 'Submenu1.1', id: '2.1'},
+    {title: 'Submenu1.2', id: '2.2'},
+    {title: 'Submenu1.3', id: '2.3'}
   ]},
   {title: 'Submenu2', id: '3', children: [
-        {title: 'Submenu2.1', id: '3.1'},
-        {title: 'Submenu2.2', id: '3.2'},
-        {title: 'Submenu2.3', id: '3.3'}
+    {title: 'Submenu2.1', id: '3.1'},
+    {title: 'Submenu2.2', id: '3.2'},
+    {title: 'Submenu2.3', id: '3.3'}
   ]}
 ];
 

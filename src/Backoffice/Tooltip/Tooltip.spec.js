@@ -123,13 +123,13 @@ describe('Tooltip', () => {
     return waitFor.assert(() => {
       expect(driver.isShown()).toBeTruthy();
     })
-    .then(() => {
-      driver.setProps({...props, active: false});
+      .then(() => {
+        driver.setProps({...props, active: false});
 
-      return waitFor.assert(() => {
-        expect(driver.isShown()).toBeFalsy();
+        return waitFor.assert(() => {
+          expect(driver.isShown()).toBeFalsy();
+        });
       });
-    });
   });
 
   it('should test inner component', () => {
@@ -145,10 +145,10 @@ describe('Tooltip', () => {
     expect(driver.isShown()).toBeFalsy();
 
     return waitFor.assert(() => expect(driver.isShown()).toBeTruthy())
-    .then(() => {
-      const buttonTestkit = buttonTestkitFactory({wrapper: driver.getTooltipWrapper(), dataHook});
-      expect(buttonTestkit.getButtonTextContent()).toBe('Button content');
-    });
+      .then(() => {
+        const buttonTestkit = buttonTestkitFactory({wrapper: driver.getTooltipWrapper(), dataHook});
+        expect(buttonTestkit.getButtonTextContent()).toBe('Button content');
+      });
   });
 
   it('should not override focus event', () => {
@@ -293,10 +293,10 @@ describe('Tooltip', () => {
       const driver = enzymeTooltipTestkitFactory({wrapper, dataHook});
       driver.mouseEnter();
       return waitFor.assert(() => expect(driver.isShown()).toBeTruthy())
-      .then(() => {
-        wrapper.unmount();
-        expect(driver.isShown()).toBeFalsy();
-      });
+        .then(() => {
+          wrapper.unmount();
+          expect(driver.isShown()).toBeFalsy();
+        });
     });
   });
 });

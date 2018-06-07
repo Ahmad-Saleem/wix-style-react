@@ -69,13 +69,13 @@ function runFocusTestsImpl(driver, storyUrl) {
       await expectNotFocused(driver, 'after focus');
     });
 
-    it(`should have focus but not focus-visible [when] root element is clicked by mouse`, async() => {
+    it(`should have focus but not focus-visible [when] root element is clicked by mouse`, async () => {
       await driver.clickRoot();
       await expectMouseFocused(driver);
     });
 
     driver.clickableElements.forEach((element, index) => {
-      it(`should not have focus-visible [when] clicked by mouse on clickable #${index}`, async() => {
+      it(`should not have focus-visible [when] clicked by mouse on clickable #${index}`, async () => {
         await element.click();
         await expectMouseFocused(driver);
       });

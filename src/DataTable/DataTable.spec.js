@@ -14,9 +14,9 @@ describe('Table', () => {
     id: 'id',
     data: [{a: 'value 1', b: 'value 2'}, {a: 'value 3', b: 'value 4'}],
     columns: [
-        {title: 'Row Num', render: (row, rowNum) => rowNum},
-        {title: 'A', render: row => row.a},
-        {title: 'B', render: row => row.b}
+      {title: 'Row Num', render: (row, rowNum) => rowNum},
+      {title: 'A', render: row => row.a},
+      {title: 'B', render: row => row.b}
     ],
     rowClass: 'class-name'
   };

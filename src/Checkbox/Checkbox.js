@@ -62,8 +62,8 @@ class Checkbox extends WixComponent {
     const classname = classNames(
       styles.root,
       indeterminate ? styles.indeterminate :
-      checked ? styles.checked :
-      styles.unchecked,
+        checked ? styles.checked :
+          styles.unchecked,
       {
         [styles.hover]: hover,
         [styles.active]: active,

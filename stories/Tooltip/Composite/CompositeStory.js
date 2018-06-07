@@ -65,27 +65,27 @@ storiesOf('7. Tooltips', module)
     </TabbedView>
   ))
 
-.add('7.2. Popover', () => (
-  <div>
-    <h1>Popover</h1>
-    <InteractiveCodeExample title="Customize a <Tooltip/>">
-      <ExamplePopover/>
-    </InteractiveCodeExample>
-  </div>
-))
-
-.add('7.3. Popover Menu', () => (
-  <TabbedView tabs={['Usage', 'Testkit']}>
+  .add('7.2. Popover', () => (
     <div>
-      <h1>Popover Menu</h1>
-      <InteractiveCodeExample title="Customize a <PopoverMenu/>">
-        <a href="?selectedKind=Core&selectedStory=PopoverMenu&full=0&down=0&left=1&panelRight=0">
-          Testkits API reference
-        </a>
-        <ExamplePopoverMenu/>
+      <h1>Popover</h1>
+      <InteractiveCodeExample title="Customize a <Tooltip/>">
+        <ExamplePopover/>
       </InteractiveCodeExample>
     </div>
+  ))
 
-    <Markdown source={PopoverReadmeTestKit}/>
-  </TabbedView>
-));
+  .add('7.3. Popover Menu', () => (
+    <TabbedView tabs={['Usage', 'Testkit']}>
+      <div>
+        <h1>Popover Menu</h1>
+        <InteractiveCodeExample title="Customize a <PopoverMenu/>">
+          <a href="?selectedKind=Core&selectedStory=PopoverMenu&full=0&down=0&left=1&panelRight=0">
+          Testkits API reference
+          </a>
+          <ExamplePopoverMenu/>
+        </InteractiveCodeExample>
+      </div>
+
+      <Markdown source={PopoverReadmeTestKit}/>
+    </TabbedView>
+  ));

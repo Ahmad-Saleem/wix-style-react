@@ -20,7 +20,7 @@ describe('RichTextArea', () => {
     browser.get(storyUrl);
   });
 
-  beforeEach(async() => {
+  beforeEach(async () => {
     await waitForVisibilityOf(richTextAreaTestkit.element());
   });
 

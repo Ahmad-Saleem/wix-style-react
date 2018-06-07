@@ -1,10 +1,10 @@
 export {
-    getStoryUrl, // Deprecated
-    createStoryUrl,
-    waitForVisibilityOf,
-    protractorTestkitFactoryCreator,
-    isFocused,
-    scrollToElement
+  getStoryUrl, // Deprecated
+  createStoryUrl,
+  waitForVisibilityOf,
+  protractorTestkitFactoryCreator,
+  isFocused,
+  scrollToElement
 } from 'wix-ui-test-utils/protractor';
 
 // TODO: protractor helper methods should be moved to wix-ui-test-utils/protractor

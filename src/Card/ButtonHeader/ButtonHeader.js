@@ -79,8 +79,8 @@ class ButtonHeader extends WixComponent {
     );
 
     const tooltipElement = tooltip ? (
-        React.cloneElement(tooltip, {}, buttonElement)
-      ) : null;
+      React.cloneElement(tooltip, {}, buttonElement)
+    ) : null;
 
     const actionElement = tooltipElement ? tooltipElement : buttonElement;
 

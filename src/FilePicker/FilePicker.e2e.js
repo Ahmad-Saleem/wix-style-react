@@ -11,14 +11,14 @@ describe('FilePicker', () => {
 
     browser.get(storyUrl);
     waitForVisibilityOf(driver.element(), 'Cannot find FilePicker')
-    .then(() => {
-      const imagePath = '../../test/assets/surf-musa.png';
-      const absolutePath = path.resolve(__dirname, imagePath);
+      .then(() => {
+        const imagePath = '../../test/assets/surf-musa.png';
+        const absolutePath = path.resolve(__dirname, imagePath);
 
-      expect(driver.getSubLabel()).toBe('No file chosen (Max size 5 MB)');
+        expect(driver.getSubLabel()).toBe('No file chosen (Max size 5 MB)');
 
-      driver.getInput().sendKeys(absolutePath);
-      expect(driver.getSubLabel()).toBe('surf-musa.png');
-    });
+        driver.getInput().sendKeys(absolutePath);
+        expect(driver.getSubLabel()).toBe('surf-musa.png');
+      });
   });
 });

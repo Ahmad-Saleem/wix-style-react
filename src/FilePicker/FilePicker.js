@@ -56,7 +56,7 @@ FilePicker.defaultProps = {
   onChange: () => {},
   supportedFormats: '*',
   errorMessage: '',
-  maxSize: 5000000  //5MB
+  maxSize: 5000000 //5MB
 };
 
 FilePicker.propTypes = {

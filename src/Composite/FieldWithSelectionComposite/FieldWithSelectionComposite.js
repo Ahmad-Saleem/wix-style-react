@@ -75,7 +75,7 @@ class FieldWithSelectionComposite extends WixComponent {
     });
 
     return isCheckbox ?
-        this.withBorderWrapper(clonedSelectionInput) : clonedSelectionInput;
+      this.withBorderWrapper(clonedSelectionInput) : clonedSelectionInput;
   }
 
   getSelectionInputType(selectionInputChild) {

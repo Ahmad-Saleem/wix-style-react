@@ -28,7 +28,7 @@ describe('WixStyleProvider', () => {
       <WixStyleProvider theme={{color}}>
         <WrappedComponent/>
       </WixStyleProvider>
-      );
+    );
 
     expect(wrapper.html()).toBe(`<div id="component">${children}</div>`);
     expect(wrapper.text()).toBe(children);
@@ -41,7 +41,7 @@ describe('WixStyleProvider', () => {
       <WixStyleProvider>
         <WrappedComponent/>
       </WixStyleProvider>
-      );
+    );
 
     expect(wrapper.text()).toBe(`Theme is core and color is ${color}`);
   });

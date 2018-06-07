@@ -49,13 +49,13 @@ export default class extends WixComponent {
   }
 
   getType = appearance =>
-     [
+    [
       {type: 'h1', candidates: ['H0']},
       {type: 'h2', candidates: ['H1', 'H1.1']},
       {type: 'h3', candidates: ['H2', 'H2.1']},
       {type: 'h4', candidates: ['H3']},
       {type: 'h5', candidates: ['H4']}
-     ]
+    ]
       .filter(({candidates}) => candidates.indexOf(appearance) !== -1)
       .reduceRight((acc, {type}) => type, 'span');
 

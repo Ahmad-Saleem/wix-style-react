@@ -69,42 +69,42 @@ describe('RadioGroup', () => {
 
     eyes.it('should show focus styles when navigated by keyboard', async () => {
       waitForVisibilityOf(radioGroupDriver.element(), 'Cannot find RadioGroup')
-      .then(async () => {
+        .then(async () => {
         // TODO: replace with forEachAsync
-        for (let index = 0; index < NUM_OF_BUTTONS_IN_EXAMPLE; index++) {
-          const driver = flattenInternalDriver(groupDriver.getButtonDriver(index));
-          await expectNotFocused(`button ${index} - before`, driver);
-          await pressTab();
-          await expectFocusedByKeyboard(`button ${index} - after`, driver);
-          index === 0 && await eyes.checkWindow(`button ${index} with focus-visible`);
-        }
-      });
+          for (let index = 0; index < NUM_OF_BUTTONS_IN_EXAMPLE; index++) {
+            const driver = flattenInternalDriver(groupDriver.getButtonDriver(index));
+            await expectNotFocused(`button ${index} - before`, driver);
+            await pressTab();
+            await expectFocusedByKeyboard(`button ${index} - after`, driver);
+            index === 0 && await eyes.checkWindow(`button ${index} with focus-visible`);
+          }
+        });
     });
 
     it('should to be selected but NOT to show focus styles when clicked by mouse', async () => {
       waitForVisibilityOf(radioGroupDriver.element(), 'Cannot find RadioGroup')
-      .then(async () => {
+        .then(async () => {
         // TODO: replace with forEachAsync
-        for (let index = 0; index < NUM_OF_BUTTONS_IN_EXAMPLE; index++) {
-          const driver = flattenInternalDriver(groupDriver.getButtonDriver(index));
-          await expectNotFocused(`button ${index} - before`, driver);
-          await driver.clickRoot();
-          expect(await radioGroupDriver.isRadioChecked(index)).toBe(true);
-          await expectFocusedByMouse(`button ${index} - after`, driver);
-        }
-      });
+          for (let index = 0; index < NUM_OF_BUTTONS_IN_EXAMPLE; index++) {
+            const driver = flattenInternalDriver(groupDriver.getButtonDriver(index));
+            await expectNotFocused(`button ${index} - before`, driver);
+            await driver.clickRoot();
+            expect(await radioGroupDriver.isRadioChecked(index)).toBe(true);
+            await expectFocusedByMouse(`button ${index} - after`, driver);
+          }
+        });
     });
 
     eyes.it('should show focus styles on first item (selected)', async () => {
       await autoExampleDriver.setProps({value: 1});
       await waitForVisibilityOf(radioGroupDriver.element(), 'Cannot find RadioGroup')
-      .then(async () => {
-        const driver = flattenInternalDriver(groupDriver.getButtonDriver(0));
-        expect(await radioGroupDriver.isRadioChecked(0)).toBe(true);
-        await expectNotFocused(`button 0 - before`, driver);
-        await pressTab();
-        await expectFocusedByKeyboard(`button 0 - after`, driver);
-      });
+        .then(async () => {
+          const driver = flattenInternalDriver(groupDriver.getButtonDriver(0));
+          expect(await radioGroupDriver.isRadioChecked(0)).toBe(true);
+          await expectNotFocused(`button 0 - before`, driver);
+          await pressTab();
+          await expectFocusedByKeyboard(`button 0 - after`, driver);
+        });
     });
   });
 });

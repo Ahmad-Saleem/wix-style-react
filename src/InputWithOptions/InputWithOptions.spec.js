@@ -121,7 +121,7 @@ const runInputWithOptionsTest = driverFactory => {
           );
 
           driver.inputDriver.trigger('keyDown', {
-            key: 37  // <Left Arrow> key code
+            key: 37 // <Left Arrow> key code
           });
           expect(driver.dropdownLayoutDriver.isShown()).toBe(false);
         });

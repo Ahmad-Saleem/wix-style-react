@@ -41,7 +41,7 @@ class RichTextAreaCompositeExample extends Component {
     this.setState(prevState => {
       prevState[componentName] = {...this.state[componentName], ...obj};
       Object.keys(prevState[componentName])
-          .forEach(k => !prevState[componentName][k] && delete prevState[componentName][k]);
+        .forEach(k => !prevState[componentName][k] && delete prevState[componentName][k]);
       return prevState;
     });
   }

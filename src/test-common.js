@@ -5,13 +5,13 @@ export {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 
 // TODO: Protractor helper should be imported from './test/utils/protractor'
 export {
-    getStoryUrl, // Deprecated
-    waitForVisibilityOf,
-    protractorTestkitFactoryCreator,
-    isFocused,
-    scrollToElement,
-    hasAttribute,
-    hasClass
+  getStoryUrl, // Deprecated
+  waitForVisibilityOf,
+  protractorTestkitFactoryCreator,
+  isFocused,
+  scrollToElement,
+  hasAttribute,
+  hasClass
 } from '../test/utils/protractor';
 
 export {enzymeTestkitFactoryCreator} from 'wix-ui-test-utils/enzyme';

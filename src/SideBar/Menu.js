@@ -49,7 +49,7 @@ class Menu extends React.Component {
     const selectedChild = findChildIndex([...children], selectedId);
     const selected = selectedId === id || selectedChild > -1;
 
-    const height = !selected ? 0 : ((children.length * 48) - 18);  /* 48 is item height, 18 is last item margin */
+    const height = !selected ? 0 : ((children.length * 48) - 18); /* 48 is item height, 18 is last item margin */
     const top = !selected ? 0 : (selectedChild * 42) || 0;
 
     const cn = classnames({

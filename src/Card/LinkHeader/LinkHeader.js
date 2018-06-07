@@ -44,8 +44,8 @@ class LinkHeader extends WixComponent {
     );
 
     const tooltipElement = tooltip ? (
-        React.cloneElement(tooltip, {}, linkElement)
-      ) : null;
+      React.cloneElement(tooltip, {}, linkElement)
+    ) : null;
 
     const actionElement = tooltipElement ? tooltipElement : linkElement;
 

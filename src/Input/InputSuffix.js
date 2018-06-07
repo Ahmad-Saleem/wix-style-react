@@ -23,14 +23,14 @@ const suffixRules = {
 };
 
 const getVisibleSuffixCount = args =>
-   Object.keys(suffixRules).map(key => suffixRules[key])
+  Object.keys(suffixRules).map(key => suffixRules[key])
     .map(fn => fn(args))
     .filter(x => x)
     .length;
 
 const InputSuffix = ({theme, errorMessage, error, disabled, help, helpMessage, onIconClicked,
-      magnifyingGlass, isClearButtonVisible, onClear, menuArrow, unit, suffix, focused,
-      tooltipPlacement, onTooltipShow
+  magnifyingGlass, isClearButtonVisible, onClear, menuArrow, unit, suffix, focused,
+  tooltipPlacement, onTooltipShow
 }) => {
 
   const suffixes = [

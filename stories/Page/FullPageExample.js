@@ -88,5 +88,5 @@ if (displayAdditionalStories) {
     )
     .add('2.13 + Page Example with short content sidePadding and maxWidth', () =>
       <FullPageExample sidePadding={0} maxWidth={800} shortContent/>
-  );
+    );
 }

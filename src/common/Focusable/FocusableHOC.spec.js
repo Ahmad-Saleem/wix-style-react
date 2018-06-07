@@ -48,7 +48,7 @@ describe('FocusableHOC', () => {
         {...focusableStates(this.props)}
         >
         Hello
-        </div>);
+      </div>);
     }
   }
 

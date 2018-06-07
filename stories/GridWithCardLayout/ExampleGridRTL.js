@@ -9,18 +9,18 @@ export default () =>
         <Card>
           <Card.Header title="Grid Columns - RTL support">
                 Row RTL support
-            </Card.Header>
+          </Card.Header>
           <Card.Content>
             <Row rtl>
               <Col span={4}>
                         אחת
-                    </Col>
+              </Col>
               <Col span={4}>
                         שתיים
-                    </Col>
+              </Col>
               <Col span={4}>
                         שלוש
-                    </Col>
+              </Col>
             </Row>
           </Card.Content>
         </Card>

@@ -34,9 +34,9 @@ class MultiSelectCheckbox extends InputWithOptions {
 
   selectedOptionsToText() {
     const selectedOptionsText = this.props.selectedOptions.map(selectedOption => this.props.options.find(option => option.id === selectedOption))
-                                                        .filter(selectedOption => selectedOption)
-                                                        .map(this.props.valueParser)
-                                                        .join(this.props.delimiter);
+      .filter(selectedOption => selectedOption)
+      .map(this.props.valueParser)
+      .join(this.props.delimiter);
     return selectedOptionsText;
   }
 

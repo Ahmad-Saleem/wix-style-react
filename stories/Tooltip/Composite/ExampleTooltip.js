@@ -126,20 +126,20 @@ class ExampleTooltip extends Component {
             <Label>Move By</Label>
             <div className={styles.flex}>
               <Label>x
-              <Input
-                size="small"
-                value={this.state.moveBy.x}
-                type="number"
-                onChange={e => this.setState({moveBy: {...this.state.moveBy, x: Number(e.target.value)}})}
-                />
+                <Input
+                  size="small"
+                  value={this.state.moveBy.x}
+                  type="number"
+                  onChange={e => this.setState({moveBy: {...this.state.moveBy, x: Number(e.target.value)}})}
+                  />
               </Label>
               <Label>y
-              <Input
-                size="small"
-                value={this.state.moveBy.y}
-                type="number"
-                onChange={e => this.setState({moveBy: {...this.state.moveBy, y: Number(e.target.value)}})}
-                />
+                <Input
+                  size="small"
+                  value={this.state.moveBy.y}
+                  type="number"
+                  onChange={e => this.setState({moveBy: {...this.state.moveBy, y: Number(e.target.value)}})}
+                  />
               </Label>
             </div>
           </div>

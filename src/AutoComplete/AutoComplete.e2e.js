@@ -11,20 +11,20 @@ describe('AutoComplete', () => {
     browser.get(storyUrl);
 
     waitForVisibilityOf(driver.element(), 'Cannot find AutoComplete')
-    .then(() => {
-      expect(driver.getDropdown().isDisplayed()).toBe(false);
+      .then(() => {
+        expect(driver.getDropdown().isDisplayed()).toBe(false);
 
-      driver.click();
-      browser.sleep(500);// eslint-disable-line no-restricted-properties
+        driver.click();
+        browser.sleep(500);// eslint-disable-line no-restricted-properties
 
-      expect(driver.getDropdown().isDisplayed()).toBe(true);
-      expect(driver.getDropdownItemsCount()).toEqual(5);
+        expect(driver.getDropdown().isDisplayed()).toBe(true);
+        expect(driver.getDropdownItemsCount()).toEqual(5);
 
-      driver.getInput().sendKeys('first');
-      expect(driver.getDropdownItemsCount()).toEqual(1);
+        driver.getInput().sendKeys('first');
+        expect(driver.getDropdownItemsCount()).toEqual(1);
 
-      expect(driver.getDropdownItem(0)).toBe('First option');
-    });
+        expect(driver.getDropdownItem(0)).toBe('First option');
+      });
   });
 
   eyes.it('should choose one of autocomplete items', () => {
@@ -33,11 +33,11 @@ describe('AutoComplete', () => {
     browser.get(storyUrl);
 
     waitForVisibilityOf(driver.element(), 'Cannot find AutoComplete')
-    .then(() => {
-      driver.click();
-      driver.getDropdownItem(2).click();
+      .then(() => {
+        driver.click();
+        driver.getDropdownItem(2).click();
 
-      expect(driver.getInput().getAttribute('value')).toBe('Third option');
-    });
+        expect(driver.getInput().getAttribute('value')).toBe('Third option');
+      });
   });
 });

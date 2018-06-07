@@ -59,21 +59,21 @@ export default class ControlledMessageBoxes extends React.Component {
       <div>
         <div style={this.buttonsStyles}>
           { Object.keys(this.layouts).map(key =>
-              React.createElement(Button, {
-                key,
-                onClick: () => this.setState({layout: key}),
-                children: `Preview <${key}/>`
-              })
-            )
+            React.createElement(Button, {
+              key,
+              onClick: () => this.setState({layout: key}),
+              children: `Preview <${key}/>`
+            })
+          )
           }
         </div>
 
         { activeLayout ?
-            React.cloneElement(activeLayout, {
-              log: text => () => console.log(text),
-              onClose: () => this.setState({layout: ''})
-            }) :
-            null
+          React.cloneElement(activeLayout, {
+            log: text => () => console.log(text),
+            onClose: () => this.setState({layout: ''})
+          }) :
+          null
         }
       </div>
     );

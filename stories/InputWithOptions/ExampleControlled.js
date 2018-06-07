@@ -51,8 +51,8 @@ class ControlledInputWithOptions extends React.Component {
 
     const predicate = element =>
       this.state.value ?
-      element.value.toLowerCase().indexOf(this.state.value.toLowerCase()) !== -1 :
-      true;
+        element.value.toLowerCase().indexOf(this.state.value.toLowerCase()) !== -1 :
+        true;
 
     return (
       <InputWithOptions

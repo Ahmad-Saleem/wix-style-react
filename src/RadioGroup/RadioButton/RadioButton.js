@@ -24,7 +24,7 @@ class RadioButton extends WixComponent {
     type: PropTypes.oneOf(['default', 'button']),
     lineHeight: PropTypes.string,
 
-  /** optional node to be rendered under label. Clicking it will not trigger `onChange` */
+    /** optional node to be rendered under label. Clicking it will not trigger `onChange` */
     content: PropTypes.node
   };
 

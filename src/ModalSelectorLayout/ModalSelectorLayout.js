@@ -262,7 +262,7 @@ export default class ModalSelectorLayout extends WixComponent {
             isSelected(item) ?
               selectedItems.filter(({id}) => item.id !== id) :
               selectedItems.concat(item) :
-           [item]
+            [item]
       });
 
     if (items.length > 0) {

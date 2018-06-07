@@ -13,7 +13,7 @@ describe('Backoffice Button', () => {
   // Specific as opposed to 'Generic' tests like the Focusable tests.
   describe(NO_DESCRIPTION, () => {
 
-    beforeEach(async() => {
+    beforeEach(async () => {
       // TODO: We do browser.get() before EACH test in order to reset the focus.
       // implmement a generic solution in AutoExampleDriver that will do
       // propper reset of the focus, so we don't have to get the page,
