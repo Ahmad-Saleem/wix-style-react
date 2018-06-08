@@ -102,7 +102,7 @@ describe('TextLink', () => {
     expect(driver.getTarget()).toBe('_blank');
   });
 
-  it('should call the `onClick` when clicked', () => {
+  it('should call `onClick` when clicked', () => {
     const onClickFunc = spy();
     const driver = createDriver(<TextLink link="" onClick={onClickFunc}/>);
 
