@@ -142,16 +142,27 @@ describe('Table', () => {
     });
 
     it('should call onSelectionChanged when top checkbox clicked and no checkboxes are checked with correct selection', () => {
-      // const onSelectionChanged = jest.fn();
-      // const driver = createDriver(<Table {...defaultProps} {...withSelection} onSelectionChanged={onSelectionChanged}/>);
-      // driver.selectRow(1);
-      // expect(onSelectionChanged).toHaveBeenCalledWith([true, true]);
+      const onSelectionChanged = jest.fn();
+      const selections = [false, false];
+      const driver = createDriver(<Table {...defaultProps} selections={selections} showSelection onSelectionChanged={onSelectionChanged}/>);
+      driver.selectTableRow();
+      expect(onSelectionChanged).toHaveBeenCalledWith([true, true]);
     });
 
     it('should call onSelectionChanged when top checkbox clicked and some checkboxes are checked with correct selection', () => {
+      const onSelectionChanged = jest.fn();
+      const selections = [false, true];
+      const driver = createDriver(<Table {...defaultProps} selections={selections} showSelection onSelectionChanged={onSelectionChanged}/>);
+      driver.selectTableRow();
+      expect(onSelectionChanged).toHaveBeenCalledWith([true, true]);
     });
 
     it('should call onSelectionChanged when top checkbox clicked and all checkboxes are checked with correct selection', () => {
+      const onSelectionChanged = jest.fn();
+      const selections = [true, true];
+      const driver = createDriver(<Table {...defaultProps} selections={selections} showSelection onSelectionChanged={onSelectionChanged}/>);
+      driver.selectTableRow();
+      expect(onSelectionChanged).toHaveBeenCalledWith([false, false]);
     });
 
     it('should check top checkbox when all rows change to check', () => {

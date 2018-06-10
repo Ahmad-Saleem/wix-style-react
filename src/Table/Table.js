@@ -72,17 +72,19 @@ export default class Table extends WixComponent {
         checked={this.state.tableCheckbox === this.checkboxState.checked}
         indeterminate={this.state.tableCheckbox === this.checkboxState.indeterminate}
         onChange={() => {
+          let selections;
           if (this.state.tableCheckbox === this.checkboxState.indeterminate) {
-            const selections = this.toggleAll(true);
+            selections = this.toggleAll(true);
             this.setState({selections, tableCheckbox: this.checkboxState.checked});
           } else if (this.state.tableCheckbox === this.checkboxState.checked) {
-            const selections = this.toggleAll(false);
+            selections = this.toggleAll(false);
             this.setState({selections, tableCheckbox: this.checkboxState.unchecked});
           } else {
-            const selections = this.toggleAll(true);
+            selections = this.toggleAll(true);
             this.setState({selections, tableCheckbox: this.checkboxState.checked});
           }
           this.dataTable.forceUpdate();
+          onSelectionChanged && onSelectionChanged(selections);
         }}
         />,
       render: (row, rowNum) => <Checkbox
