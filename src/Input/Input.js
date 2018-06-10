@@ -250,6 +250,17 @@ Input.defaultProps = {
   clearButton: false
 };
 
+const borderRadiusValidator = (props, propName) => {
+  const value = props[propName];
+  if (typeof value === 'string') {
+    throw new Error('Passing a string (for className) is deprecated. Use new className prop.');
+  } else if (typeof value === 'undefined' || typeof value === 'boolean') {
+    return null;
+  } else {
+    return new Error('Invalid type. boolean expected.');
+  }
+};
+
 Input.propTypes = {
   ariaControls: PropTypes.string,
   ariaDescribedby: PropTypes.string,
@@ -306,10 +317,10 @@ Input.propTypes = {
   name: PropTypes.string,
 
   /** When set to true, this input will have no rounded corners on its left */
-  noLeftBorderRadius: PropTypes.bool,
+  noLeftBorderRadius: borderRadiusValidator,
 
   /** When set to true, this input will have no rounded corners on its right */
-  noRightBorderRadius: PropTypes.bool,
+  noRightBorderRadius: borderRadiusValidator,
 
   /** Standard input onBlur callback */
   onBlur: PropTypes.func,

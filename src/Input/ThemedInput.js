@@ -34,9 +34,20 @@ class ThemedInput extends Input {
       [styles.hasFocus]: forceFocus || this.state.focus,
       [styles.roundInput]: roundInput,
       [styles.hasValue]: (value && value.length) || (this.input && !!this.input.value),
-      [styles.noRightBorderRadius]: noRightBorderRadius,
-      [styles.noLeftBorderRadius]: noLeftBorderRadius
+      [styles.noRightBorderRadius]: noRightBorderRadius === true, // assert boolean type
+      [styles.noLeftBorderRadius]: noLeftBorderRadius === true // assert boolean type
     };
+
+    /* Adding [noRightBorderRadius] as a string className, is a hack for backward compatibility with
+     * a bug that existed in WSR version <= 4.1.0. This should be removed in version 5.x.x.
+     */
+    if (typeof noRightBorderRadius === 'string') {
+
+      classes[noRightBorderRadius] = true;
+    }
+    if (typeof noLeftBorderRadius === 'string') {
+      classes[noLeftBorderRadius] = true;
+    }
 
     const placeholder = this.props.placeholder;
     return (
